@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-card": "@vant/weapp/card/index"
+  },
+  "enablePullDownRefresh":false,
+  "navigationBarTitleText": "确认订单"
+}

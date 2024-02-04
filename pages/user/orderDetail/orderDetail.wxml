@@ -1,0 +1,116 @@
+<!--pages/user/orderDetail/orderDetail.wxml-->
+<view style="padding: 0vw 2vw 20vw 2vw;width: 94vw;margin-left: 1vw;background-color: white;margin-top: 10vw;border-top-left-radius: 4vw;border-top-right-radius: 4vw;border: 1rpx solid rgb(212, 212, 212);display: block;">
+  <!-- 订单号 -->
+  <view style="width: 90vw;height: 10vw;border-top-left-radius: 4vw;border-top-right-radius: 4vw;border-bottom: 1rpx solid rgb(223, 223, 223);display: flex;align-items: center;padding-left: 4vw;">
+    <text style="color: rgb(139, 139, 139);font-size: 4vw;line-height: 8vw;display: block;width: 92vw;">订单编号：{{orderItem.orderId}}</text>
+  </view>
+  <!-- 商品展示 -->
+  <view style="width: 80vw;padding: 3vw 5vw 5vw 5vw;display: block;">
+    <view wx:for="{{orderItem.items}}" wx:for-item="goodItem" wx:key="_id" style="width: 80vw;height: 30vw;">
+      <van-card
+        num="{{goodItem.goodNum}}"
+        price="{{goodItem.price}}"
+        title="{{goodItem.name}}"
+        thumb="{{goodItem.imageUrl}}"
+        custom-class="cardStyle"
+      >
+        <view slot="desc" style="display: flex; flex-wrap: wrap;margin-top: 4%;color: rgb(97, 97, 97);">
+          <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+            <text>后背：{{goodItem.houbei}}</text>
+          </view>
+          <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+            <text>领口：{{goodItem.lingkou}}</text>
+          </view>
+          <view style="flex-basis: 36%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+            <text>体重：{{goodItem.tizhong}}</text>
+          </view>
+          <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+            <text>肩宽：{{goodItem.jiankuan}}</text>
+          </view>
+          <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+            <text>袖口：{{goodItem.xiuchang}}</text>
+          </view>
+          <view style="flex-basis: 36%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+            <text>身高：{{goodItem.shengao}}</text>
+          </view>
+        </view>
+      </van-card>
+    </view>
+  </view>
+
+  <!-- 订单选项 -->
+  <!-- 选项：查看详情等 -->
+  <view style="height: 10vw;width: 86vw;padding: 1vw 5vw 1vw 5vw;display: flex;align-items: center;position: relative;margin-top: 0vw;margin-bottom: 4vw;">
+    <view style="position: absolute;padding: 1vw 2vw 1vw ;height: 10vw;width: 56vw; right: 0vw;top: 0vw;display: flex;justify-content: space-around;align-items: center;color: rgb(80, 80, 80);">
+      <view style="width: 24vw;font-size: 3.8vw;height: 70%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);position: absolute;top: 15%;right: {{(item.status!==0&&item.status!==1)?5:30}}vw;">加入购物车</view>
+      <view style="width: 20vw;font-size: 3.8vw;height: 70%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);position: absolute;top: 15%;right: 5vw;" wx:if="{{item.status==0||item.status==1}}">{{item.status==0?'申请退款':'确认收货'}}</view>
+    </view>
+    <!-- <text>查看详情</text> -->
+
+  </view>
+
+  <!-- 商品信息 -->
+  <!-- 订单状态 -->
+  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">状态：</view>
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(141, 141, 141);">{{orderItem.status==0?'已付款':orderItem.status==1?'待收货':'已完成'}}</view>
+  </view>
+
+  <!-- 订单总价 -->
+  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">总价：</view>
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(250, 162, 48);">￥{{orderItem.totalPrice}}</view>
+  </view>
+  <!-- 订单减免 -->
+  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">减免：</view>
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(250, 105, 48);">￥{{orderItem.reduction}}</view>
+  </view>
+  <!-- 订单实付 -->
+  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">实付：</view>
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(250, 162, 48);">￥{{orderItem.totalPrice-orderItem.reduction}}</view>
+  </view>
+  <!-- 分割线 -->
+  <view style="width: 90vw;height: 0vw;border-bottom:1rpx solid rgb(223, 223, 223);padding-left: 4vw;">
+  </view>
+  <!-- 订单信息 -->
+  <view style="border-radius: 4vw; padding-bottom: 1vw;padding-top: 2vw; width: 94vw;margin-top: 4vw;display: flex;">
+    <view style="width: 27vw;height: 6vw;display: flex;align-items: center;border-radius: 4vw;padding-left: 2vw;">收货信息：</view>
+    <view style="width: 60vw;padding-top: 0vw;padding-bottom: 2vw;padding-right: 2vw;margin-left: 4vw; color: rgb(122, 122, 122);border-radius: 4vw;">
+      <view style="width: 55vw;font-size: 4.2vw;padding-bottom: 1vw;padding-top: 0vw;">
+        <text >{{orderItem.consignee}}</text>
+        <text style="margin-left: 2vw;" >{{orderItem.phone}}</text>
+      </view>
+      <view style="width: 55vw;margin-top: 1vw;font-size: 4.2vw;padding-bottom: 1vw;padding-top: 0vw;">
+        <text>{{orderItem.address[0]+' '+orderItem.address[1]+' '+orderItem.address[2]+' '+orderItem.address[3]}}</text>
+      </view>
+    </view>
+
+  </view>
+  <!-- 创建时间 -->
+  <view style="position: relative;height: 10vw;width: 94vw;margin-top: 2vw;font-size: 4.2vw;">
+    <view style="width: 30vw;height: 6vw;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">创建时间：</view>
+    <view style="width: 60vw;padding-top: 0vw;padding-bottom: 2vw;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;color: rgb(122, 122, 122);">
+      <text>{{orderItem.createTime}}</text>
+    </view>
+  </view>
+  <!-- 更新时间 -->
+  <view style="position: relative;height: 10vw;width: 94vw;margin-top: 2vw;font-size: 4.2vw;">
+    <view style="width: 30vw;height: 6vw;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">更新时间：</view>
+    <view style="width: 60vw;padding-top: 0vw;padding-bottom: 2vw;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;color: rgb(122, 122, 122);">
+      <text>{{orderItem.updateTime}}</text>
+    </view>
+  </view>
+
+</view>
+
+
+<!-- 底部选项 -->
+<view style="position: fixed;width: 100vw;bottom: 0vh;left: 0vw;background-color: white;display: flex;justify-content: flex-end;align-items: center;padding-top: 3vw;padding-bottom: 6vw;">
+  <view style="padding: 2vw 4vw 2vw 4vw; margin-left: 1vw;margin-right: 1vw;border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(122, 122, 122);color: rgb(82, 82, 82);" bind:tap="checkLogistics">查看物流</view>
+  <view style="padding: 2vw 4vw 2vw 4vw;margin-left: 1vw;margin-right: 1vw;border: 1rpx solid rgb(122, 122, 122);color: rgb(82, 82, 82);border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;">联系客服</view>
+  <view style="padding: 2vw 4vw 2vw 4vw;margin-left: 1vw;margin-right: 1vw;border: 1rpx solid rgb(247, 113, 23);color: rgb(247, 113, 23); border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;">加入购物车</view>
+  
+</view>
+

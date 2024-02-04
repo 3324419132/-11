@@ -1,0 +1,4 @@
+/* pages/user/addressManage/addressEdit.wxss */
+page{
+  background-color: #ffffff;
+}

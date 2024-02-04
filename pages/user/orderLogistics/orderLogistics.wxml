@@ -1,0 +1,11 @@
+<!--pages/user/orderLogistics/orderLogistics.wxml-->
+<view style="padding: 10vw 2vw 20vw 2vw;background-color: white;">
+  <van-steps
+    steps="{{ steps }}"
+    active="{{ active }}"
+    direction="vertical"
+    active-color="#07c160"
+    custom-class="steps"
+  />
+</view>
+

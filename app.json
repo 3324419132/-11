@@ -1,0 +1,73 @@
+{
+  "pages":[
+    "pages/test/test",
+
+    "pages/login/login",
+    "pages/register/register",
+  
+
+    "pages/home/home",
+    "pages/search/search",
+    "pages/goods2/goods2",
+    "pages/index/index",
+
+    "pages/cart/cart",
+    "pages/checkout/checkout",
+    "pages/pay/pay",
+
+    "pages/user/userPage/userPage",
+    "pages/user/order/order",
+    "pages/user/admin/admin",
+    "pages/user/admin-dd/admin-dd",
+    "pages/user/addressManage/addressManage",
+    "pages/user/addressEdit/addressEdit",
+    "pages/user/userMsgEditor/userMsgEditor",
+    "pages/user/orderDetail/orderDetail",
+    "pages/user/orderLogistics/orderLogistics"
+
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff2200",
+    "navigationBarTitleText": "沂蒙小棉袄",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+    
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "主页",
+      "iconPath": "/images/tabs/home.png",
+      "selectedIconPath": "/images/tabs/home-active.png"
+    },
+    {
+      "pagePath": "pages/cart/cart",
+      "text": "购物车",
+      "iconPath": "/images/tabs/shopping-cart.png",
+      "selectedIconPath": "/images/tabs/shopping-cart-active.png"
+    },{
+
+      "pagePath": "pages/user/userPage/userPage",
+      "text": "个人信息",
+      "iconPath": "/images/tabs/user.png",
+      "selectedIconPath": "/images/tabs/user-active.png"
+    }]
+  },
+  "usingComponents": {
+    "van-area": "@vant/weapp/area/index"
+  },
+  "permission": {
+    "scope.userInfo": {
+      "desc": "获取用户信息将用于登录"
+    }
+  },
+  "logisticsPlugin": {
+    "version": "2.1.5",
+    "provider": "wx9ad912bf20548d92"
+  } ,
+  "cloud": true,
+  
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,33 @@
+<!-- 搜索框 -->
+<view class="search-container">
+  <input bindinput="getSearch" class="search-input" bindconfirm="goSearch" confirm-type="search" placeholder="请输入搜索关键词" ></input>
+  <image bindtap="goSearch" src="../../images/home/search.svg" class="search-icon"></image>
+</view>
+
+<!-- 轮播图 -->
+<swiper indicator-dots="{{true}}" indicator-active-color="#ff0000" autoplay="true" circular="true">
+  <swiper-item  wx:for="{{sylbt}}">
+    <image src="{{item.image}}"></image>
+  </swiper-item>
+</swiper>
+<!-- 分类盒子 -->
+
+
+<!-- 商品列表 -->
+<view class="floor-container">
+  <view class="floor-title">热门商品</view>
+  <view class="product-list">
+    <view class='item' wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-index="{{index}}">
+      <image src="{{item.picture[0]}}" class="product-image"></image>
+      <view class="product-name">{{item.name}}</view>
+      <view class="product-price">￥{{item.price}}</view>
+    </view>
+
+  </view>
+</view>
+
+
+
+
+
+

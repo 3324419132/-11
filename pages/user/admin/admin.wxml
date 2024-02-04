@@ -1,0 +1,12 @@
+<!-- 未登陆的状态 -->
+<view class="root" wx:if="{{noLogin}}">
+  账号：
+  <input bindinput="getName"></input>
+  密码：
+  <input bindinput="getPassword"></input>
+  <button bindtap="goLogin">管理员登陆</button>
+</view>
+<!-- 登陆成功的状态 -->
+<view wx:else="">
+  <button bindtap="checkdd">管理查看订单</button>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "购物车"
+}

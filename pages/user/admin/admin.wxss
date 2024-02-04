@@ -1,0 +1,17 @@
+.root{
+  background: white;
+  border-radius: 80rpx;
+  padding:60rpx;
+  margin:30rpx;
+}
+
+input{
+  border:2rpx solid #ff2200;
+  border-radius: 10rpx;
+}
+
+button{
+  width: 400rpx;
+  border-radius: 60rpx;
+  background: rgb(233, 165, 152);
+}

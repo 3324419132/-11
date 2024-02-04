@@ -1,0 +1,51 @@
+<!--pages/denglu/denglu.wxml-->
+<view class="header" style="position: relative;">
+  <view style="width: 12vw;height: 12vw;border-radius: 6vw;position: relative;margin-left: 4vw;">
+    <button bindtap="login" class="avatar-wrapper"></button>
+    <image class="avatar" src="{{islogin ? userData.imageUrl : avatarUrl}}" binderror="handleImageError"></image>
+  </view>
+
+  <view style="margin-left: 5vw;font-size: 5vw;font-weight: 500;">
+    {{(!islogin)?'点击头像登录':userData.nickName}}
+  </view>
+  <view style="position: absolute;right: 4vw;padding: 0.2vw 2vw 0.2vw 2vw;top: 7vw;border: 1rpx solid rgb(255, 145, 0);height: 6vw;line-height: 6vw;font-size: 3.5vw;border-radius: 1vw;color: rgb(255, 145, 0);">
+    {{!islogin?'未登录':userData.authority==1?'用户':'商家'}}
+  </view>
+  <!-- <button bindtap="login" class="login">点击登录</button> -->
+  <!-- <view class="user-info">
+    <text>当前登录手机号: {{currentUserPhone}}</text>
+  </view> -->
+</view>
+
+<view style="margin-top: 2vw;">
+  <view class="item" bindtap="navigateTowddd">
+    <view class="button">我的订单</view>
+    <view class="right_arrow"></view>
+  </view>
+  <view class="item" bindtap="navigateToAddress">
+    <view class="button">地址管理</view>
+    <view class="right_arrow"></view>
+  </view>
+  <view class="item" bindtap="navigateToMsgEditor">
+    <view class="button">信息编辑</view>
+    <view class="right_arrow"></view>
+  </view>
+  <view class="item" wx:if="{{userInfo.phone=='16784396548'}}" bindtap="navigateTowddd">
+    <view class="button">商品管理</view>
+    <view class="right_arrow"></view>
+  </view>
+  <view class="item" style="padding: 0vw 5vw 0vw 0vw">
+    <button class="button" style="width: 94vw;padding:5vw 0vw 5vw 5vw;" open-type="contact">在线客服</button> 
+    <!-- 必须是button 不能是text否则无法点击跳转 -->
+    <view class="right_arrow"></view>
+  </view>
+  <view class="item" style="padding: 0vw 5vw 0vw 0vw">
+    <button class="button" style="width: 94vw;padding:5vw 0vw 5vw 5vw;" open-type="feedback">反馈建议</button>
+    <view class="right_arrow"></view>
+  </view>
+  <view class="item" bindtap="admindd">
+    <view class="button">管理员登录</view>
+    <view class="right_arrow"></view>
+  </view>
+  <button bindtap="loginOut" class="login_out" wx:if="{{islogin}}">退出登录</button>
+</view>

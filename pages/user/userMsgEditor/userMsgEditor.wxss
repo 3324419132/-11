@@ -1,0 +1,35 @@
+/* pages/user/userMsgEditor/userMsgEditor.wxss */
+.avatar{
+  width: 12vw;
+  height: 12vw;
+  border-radius: 6vw;
+  position: absolute;
+  border: 1rpx solid rgb(192, 192, 192);
+  top: 0vw;
+  left: 0vw;
+  z-index: 2;
+}
+.avatar-wrapper{
+  width: 12vw;
+  height: 12vw;
+  border-radius: 6vw;
+  background-color: white;
+  position: absolute;
+  top: 0vw;
+  left: 0vw;
+  z-index: 3;
+  opacity: 0;
+}
+
+.text_error{
+  margin-top: 2vw;
+  height: 5vw;
+  line-height: 5vw;
+  color: red;
+  transition: all 0.5s;
+}
+.text{
+  color: red;
+  height: 0vw;
+  transition: all 1s;
+}

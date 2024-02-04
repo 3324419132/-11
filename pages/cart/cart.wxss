@@ -1,0 +1,191 @@
+/* 在购物车页面的 wxss 文件中添加以下样式 */
+
+/* 整体购物车容器 */
+.shoppingCart {
+  width: 100%;
+  padding: 20rpx;
+}
+
+/* 单个购物车项 */
+.shoppingCartItem {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff;
+  border: 1rpx solid #ddd;
+  margin-bottom: 10rpx;
+  border-radius: 5rpx;
+  
+}
+
+/* 左侧复选框 */
+.floatLeft {
+  flex: 1;
+}
+
+/* 复选框样式 */
+.checkbox {
+  display: flex;
+  width: 40rpx;
+  height:70rpx;
+}
+
+/* 右侧商品信息 */
+.floatRight {
+  flex: 6;
+  padding-left: 20rpx;
+}
+
+/* 商品名称 */
+.titleClass {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+/* 商品款式 */
+.styleClass {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 商品身高、体重等信息 */
+.shengaoClass {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+/* 功能区（增加、减少按钮和数量） */
+.functionClass {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 30rpx;
+  margin-top: 20rpx; /* 增加上边距 */
+}
+
+/* 按钮样式 */
+.reduceBtn,
+.plusClass,
+.numClass {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background-color: #eee;
+  margin: 0 10rpx;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 底部结算栏 */
+.bottomView {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  background-color: rgba(255, 255, 255, 0.9); /* 使用透明度 */
+  padding: 20rpx;
+  border-top: 1rpx solid #ddd;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+  margin-top: 20rpx; /* 增加上边距 */
+}
+
+
+/* 全选复选框 */
+.toPayLeft {
+  display: flex;
+  align-items: center;
+}
+
+/* 结算按钮 */
+.toPay {
+  background-color: rgb(72, 170, 7);
+  color: #fff;
+  font-size: 5vw;
+  font-weight: bold;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: c;
+}
+
+/* 总数量和总价信息 */
+
+
+/* 商品总数量 */
+.total {
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 10rpx;
+}
+
+/* 商品总价 */
+.totalPrice {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #f00;
+  width: 15vw;
+}
+.priceClass{
+  color: #f00;
+  margin-right: 10rpx;
+}
+.showDetailButton {
+  background-color: #007aff;
+  color: #fff;
+  padding: 12rpx 15rpx;
+  border-radius: 5rpx;
+  font-size: 27rpx;
+  cursor: pointer;
+  margin-top: 1rpx;
+  transition: background-color 0.5s, color 0.3s;
+  width: 70%;
+}
+
+/* 鼠标悬停时的按钮样式 */
+.showDetailButton:hover {
+  background-color: #0056b3;
+}
+
+/* 展开商品详情容器样式 */
+.detailContainer {
+  margin-top: 10rpx;
+  padding: 10rpx;
+  background-color: #f9f9f9;
+  border-radius: 5rpx;
+  /* display: none; */
+}
+
+/* 商品详情文字样式 */
+.detailText {
+  font-size: 24rpx;
+  color: #333;
+}
+
+/* 让展示详情按钮和删除按钮并排放置 */
+.buttonContainer {
+  display: flex;
+  justify-content: space-between; /* 或者其他适当的排列方式 */
+}
+
+/* 删除按钮样式 */
+.deleteButton {
+  background-color: #f00;
+  color: #fff;
+  padding: 10rpx 15rpx;
+  border-radius: 5rpx;
+  font-size: 27rpx;
+  cursor: pointer;
+  margin-top: 1rpx;
+  transition: background-color 0.3s, color 0.3s;
+  width: 30%;
+}
+
+/* 鼠标悬停时的删除按钮样式 */
+.deleteButton:hover {
+  background-color: #f55;
+}

@@ -1,0 +1,44 @@
+<!--pages/user/addressManage/addressEdit.wxml-->
+<!-- 收货人 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;margin-top: 8vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;">收货人</text>
+  <input placeholder="名字" style="margin-left: 5vw;width: 60vw;height: 13vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;" value="{{addressItem.name}}" bindinput="getInputContent" data-id="1"  />
+</view>
+<!-- 手机号码 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;">手机号码</text>
+  <input placeholder="手机号" style="margin-left: 5vw;width: 60vw;height: 13vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;color: {{inputedError?'red':'black'}};" value="{{addressItem.phone}}" bindinput="getInputContent" data-id="2" bindblur="handleBlur" maxlength="11" />
+</view>
+<!-- 所在地区 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;">所在地区</text>
+  <text style="margin-left: 5vw;width: 60vw;height: 13vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;display: flex;align-items: center;color: #808080;" bind:tap="selectAddress">{{(province!=''||city!=''||county!='')?(province+' '+city+' '+county):'-----请选择-----'}}</text>
+
+
+</view>
+<!-- 详细地址 -->
+<view style="display: flex;height: 20vw;width: 100vw;padding-left: 5vw;margin-top: 3.5vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;">具体地址</text>
+  <textarea placeholder="具体区域（镇、小区）" style="height: 20vw;width: 60vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;margin-left: 5vw;padding-top: 2vw;" value="{{specificAddress}}" bindinput="getInputContent" data-id="3">
+  </textarea>
+</view>
+
+<!-- 默认地址 -->
+<view style="display: flex;height: 20vw;width: 100vw;padding-left: 5vw;margin-top: 8vw;align-items: center;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 30vw;">设为默认地址</text>
+  <switch checked="{{isDefaultAddress}}" style="width: 20vw;margin-left: 45vw;" bindchange="switchChange"></switch>
+</view>
+
+<!-- 保存/修改按钮 -->
+<view style="position: fixed;bottom: 10vw;width: 100vw;height: 10vh;background-color: white;">
+  <view style="height: 12vw;width: 80vw;background: linear-gradient(to right, rgb(252, 197, 134),rgb(253, 179, 93),rgb(253, 179, 93),rgb(253, 188, 113),rgb(247, 200, 147));color: white;display: flex;justify-content: center;align-items: center;border-radius: 4vw;letter-spacing: 2rpx;position: absolute;top: 2vw;left: 10vw;font-size: 4.2vw;transition-property: background;transition-duration: 0.5s;" bind:tap="confirmAddAddress">
+  <text>{{type==1?'修改':'保存'}}</text>
+</view>
+
+
+</view>
+
+<!-- 蒙版 -->
+<view style="position: absolute;z-index: 4;width: 100vw;height: 100vh;top: 0vh;left: 0vh;background-color: #7a7a7a;opacity: 0.6;" wx:if="{{isAreaSelected}}" bind:tap="cancelSelectArea"></view>
+
+<van-area area-list="{{ areaList }}" columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}" title="请选择地区" style="position: fixed;height: 40vh;width: 100vw;z-index: 5;bottom:{{isAreaSelected?0:-40}}vh;transition-property: bottom;transition-duration: 0.5s;" bind:cancel="cancelSelectArea" bind:confirm="confirmSelectArea" />

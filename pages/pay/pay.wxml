@@ -1,0 +1,13 @@
+<!--pages/pay/pay.wxml-->
+<view class="Pay">
+  <view class="Price">￥{{totalPrice}}</view>
+  <view class="text">请选择支付方式</view>
+  <view class="Ways" wx:for="{{payways}}" wx:for-item="item" wx:for-index="i">
+
+    <view class="Paylist">{{item.name}}</view>
+    <label class="checkbox">
+      <checkbox checked="{{item.checked}}" bindtap="checkboxClick" data-index="{{i}}" />
+    </label>
+  </view>
+  <view class="OK" bindtap="OK">确认付款</view>
+</view>

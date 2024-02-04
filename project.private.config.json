@@ -1,0 +1,128 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "%E6%B1%87%E6%80%BB",
+  "setting": {
+    "compileHotReLoad": true,
+    "bigPackageSizeSupport": true,
+    "urlCheck": false
+  },
+  "libVersion": "2.25.4",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/cart/cart",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/checkout/checkout",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/orderLogistics/orderLogistics",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/orderLogistics/orderLogistics",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/orderDetail/orderDetail",
+          "query": "orderItem=%257B%2522_id%2522%253A%2522a7ec2ba465aa81ee00c35e86093e4f79%2522%252C%2522items%2522%253A%255B%257B%2522style%2522%253A%2522%25E7%2581%25B0%2522%252C%2522goodNum%2522%253A%25221%2522%252C%2522imageUrl%2522%253A%2522https%253A%252F%252F636c-cloud1-9gueqd6i86209e74-1320158400.tcb.qcloud.la%252Fkit-cms-upload%252F2023-09-17%252F14131694948324276_clothe1.png%253Fsign%253D3a3430ec39c35ddc36471fb06b4cd2fa%2526t%253D1694952844%2522%252C%2522price%2522%253A%2522200%2522%252C%2522lingkou%2522%253A20%252C%2522name%2522%253A%2522%25E4%25B8%25AD%25E5%25BC%258F%25E8%25A5%259F%25E5%25B0%258F%25E6%25A3%2589%25E8%25A2%2584%2522%252C%2522shengao%2522%253A180%252C%2522tizhong%2522%253A90%252C%2522xiuchang%2522%253A40%252C%2522houbei%2522%253A20%252C%2522id%2522%253A3%252C%2522jiankuan%2522%253A20%257D%252C%257B%2522goodNum%2522%253A2%252C%2522imageUrl%2522%253A%2522https%253A%252F%252F636c-cloud1-9gueqd6i86209e74-1320158400.tcb.qcloud.la%252Fkit-cms-upload%252F2023-09-17%252F14131694948324276_clothe1.png%253Fsign%253D3a3430ec39c35ddc36471fb06b4cd2fa%2526t%253D1694952844%2522%252C%2522jiankuan%2522%253A20%252C%2522name%2522%253A%2522%25E6%25B0%2591%25E6%2597%258F%25E9%25A3%258E%25E6%2589%258B%25E5%25B7%25A5%25E7%259B%2598%25E6%2589%25A3%25E5%2581%258F%25E8%25A5%259F%25E5%25B0%258F%25E6%25A3%2589%25E8%25A2%2584%2522%252C%2522xiuchang%2522%253A30%252C%2522style%2522%253A%2522%25E7%2599%25BD%2522%252C%2522tizhong%2522%253A82%252C%2522houbei%2522%253A20%252C%2522id%2522%253A%25221%2522%252C%2522lingkou%2522%253A23%252C%2522price%2522%253A135%252C%2522shengao%2522%253A182%257D%255D%252C%2522notes%2522%253A%2522%25E6%259A%2582%25E6%2597%25A0%25E5%25A4%2587%25E6%25B3%25A8%2522%252C%2522orderId%2522%253A%2522EIS8923H23109%2522%252C%2522phone%2522%253A%252219506112823%2522%252C%2522status%2522%253A0%252C%2522totalPrice%2522%253A470%252C%2522userId%2522%253A%252218949954607%2522%252C%2522address%2522%253A%255B%2522%25E5%25AE%2589%25E5%25BE%25BD%25E7%259C%2581%2522%252C%2522%25E5%25AE%25BF%25E5%25B7%259E%25E5%25B8%2582%2522%252C%2522%25E6%25B3%2597%25E5%258E%25BF%2522%252C%2522xx%25E9%2595%2587xx%25E6%259D%2591%2522%255D%252C%2522isHaveChange%2522%253Afalse%252C%2522updateTime%2522%253A%25222024-01-19T14%253A05%253A35.721Z%2522%252C%2522createTime%2522%253A%25222024-01-19T13%253A59%253A40.866Z%2522%257D",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/order/order",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/userMsgEditor/userMsgEditor",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/userPage/userPage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/addressEdit/addressEdit",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/addressManage/addressEdit",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/addressManage/addressManage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/register/register",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/home/home",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/user",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

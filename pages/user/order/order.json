@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-card": "@vant/weapp/card/index",
+    "orderItem":"/components/order/orderItem",
+    "emptyItm":"/components/empty/emptyItem"
+  },
+  "enablePullDownRefresh":false,
+  "navigationBarTitleText": "我的订单"
+}

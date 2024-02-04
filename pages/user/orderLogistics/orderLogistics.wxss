@@ -1,0 +1,8 @@
+/* pages/user/orderLogistics/orderLogistics.wxss */
+.steps{
+  margin: auto;
+  box-shadow: 1rpx 1rpx 1rpx 1rpx rgb(216, 216, 216);
+}
+page{
+  background-color: #fafafa;
+}

@@ -1,0 +1,230 @@
+/* pages/goods2/goods2.wxss */
+.detail-name{
+  font-size: 40rpx;
+}
+
+/* pages/goods/goods.wxss */
+.swiper-container {
+  width: 100%; /* 设置轮播窗口的宽度为整个视口宽度 */
+  height: 300px; /* 调整轮播窗口的高度，根据需要进行调整 */
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.goods-info-box {
+  padding: 10px;
+  padding-right: 0;
+}
+
+.goods-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  color: #c00000;
+  font-size: 25px;
+  margin: 10px 0;
+}
+.goods-name{
+  font-size: 22px;
+} 
+.model-button {
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8a8888;
+  color: gray;
+  background-color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.model-button:active {
+  transform: translateY(2px);
+}
+.yf{
+  font-size: 12px;
+  color:gray;
+  margin:10px 0;
+}
+
+.separator {
+  width: 100%;
+  height: 8px;
+  background-color: #f5f3f3; /* 灰色背景色 */
+  margin-top: 3px; /* 设置分隔线与上方元素的间距 */
+  margin-bottom: 10px; /* 设置分隔线与下方元素的间距 */
+}
+.infotext{
+  text-align:center;
+  font-size:14px;
+  font-weight: bold;
+}
+
+.photo-scroll {
+  margin-top: 10px;
+  height: 300px; /* 设置滚动区域的高度，根据需要进行调整 */
+  overflow: hidden;
+}
+
+.photo-container {
+  margin-top: 10px;
+  margin-bottom: 10px; /* 设置图片之间的间距，根据需要进行调整 */
+}
+
+.photo {
+  width: 100%;
+  height: 300px; /* 设置图片高度，根据需要进行调整 */
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+.bottom-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* 调整导航栏的高度 */
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+
+}
+
+.left-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 33.33%;
+}
+
+.icon {
+  width: 24px; /* 调整图标的大小 */
+  height: 24px;
+}
+
+.right-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 85%; /* 调整右边部分的宽度 */
+  justify-content: flex-end; /* 右对齐按钮 */
+}
+
+.cart-button {
+  color: #ffffff;
+  padding: 10px 24px; /* 调整按钮的内边距 */
+  border-radius: 17px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 70%; /* 调整右边部分的宽度 */
+}
+
+.cart-button-red {
+  background-color: red;
+}
+
+.cart-button-orange {
+  background-color: orange;
+}
+
+.cart-button:hover {
+  opacity: 0.9;
+}
+
+
+/* 底部区域 */
+/* .bottom_all{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:80rpx;
+  background: #e0e0e0;
+  display: flex;
+} */
+
+
+/* 半弹窗背景 */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+/* 弹窗内容框 */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%; /* 根据需要调整宽度 */
+  
+  height: 80%;
+  max-width: 400px; /* 设置最大宽度，避免在大屏幕上过宽 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* 选择款式下拉框 */
+picker-selector {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* 输入框 */
+input[type="number"],
+input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  margin-bottom:1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* 确认按钮 */
+.add-to-cart-button {
+  background-color: #007AFF;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 关闭按钮 */
+.close-button {
+  position: absolute;
+  top: 8%;
+  right: 17%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

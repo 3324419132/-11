@@ -1,0 +1,7 @@
+<!--components/empty/emptyItem.wxml-->
+<view style="position: fixed;height: 40vw;width: 40vw;top: 35vh;left: 30vw;" wx:if="{{isShow}}">
+  <view style="height: 30vw;width: 40vw;display: flex;justify-content: center;">
+    <image src="{{imageUrl}}" style="height: 30vw;width: 30vw;" ></image>
+  </view>
+  <view style="width: 40vw;height: 10vw;display: flex;justify-content: center;align-items: center;font-size: 5vw;color: rgb(172, 172, 172);">{{title}}</view>
+</view>

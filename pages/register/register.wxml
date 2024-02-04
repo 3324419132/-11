@@ -1,0 +1,13 @@
+<view class="register-container">
+  <view class="input-container">
+    <input placeholder="手机号" bindinput="inputPhone" />
+  </view>
+  <view class="input-container">
+    <input type="password" placeholder="密码至少6位，包含数字和字母" bindinput="inputPassword" />
+  </view>
+  <view class="input-container">
+    <input type="password" placeholder="确认密码" bindinput="inputConfirmPassword" />
+  </view>
+  <button bindtap="register">注册</button>
+  <text>已有账号？</text><navigator url="/pages/login/login" style="color: #007AFF;">点击登录</navigator>
+</view>

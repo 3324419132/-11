@@ -1,0 +1,54 @@
+<!--components/order/orderItem.wxml-->
+    <!-- 订单非空 -->
+    <view style="width: 90vw;height: 68vw;background-color: white;margin-left: 5vw;margin-top: 4vw;margin-bottom: 8vw;border-radius: 3vw;box-shadow: 1rpx 1rpx 0rpx 1rpx rgb(221, 221, 221);" wx:for="{{orderList}}" wx:key="index">
+      <!-- 订单号 -->
+      <view style="width: 86vw;height: 10vw;border-top-left-radius: 4vw;border-top-right-radius: 4vw;border-bottom: 1rpx solid rgb(223, 223, 223);display: flex;align-items: center;padding-left: 4vw;">
+        <text style="color: rgb(139, 139, 139);font-size: 4vw;line-height: 8vw;display: block;width: 92vw;">订单编号：{{item.orderId}}</text>
+      </view>
+      <!-- 商品展示 -->
+      <view style="width: 80vw;padding: 3vw 5vw 5vw 5vw;height: 37vw;overflow: scroll;">
+        <view wx:for="{{item.items}}" wx:for-item="goodItem" wx:key="_id" style="width: 80vw;height: 30vw;">
+          <van-card
+            num="{{goodItem.goodNum}}"
+            price="{{goodItem.price}}"
+            title="{{goodItem.name}}"
+            thumb="{{goodItem.imageUrl}}"
+            custom-class="cardStyle"
+          >
+            <view slot="desc" style="display: flex; flex-wrap: wrap;margin-top: 4%;color: rgb(97, 97, 97);">
+              <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+                <text>后背：{{goodItem.houbei}}</text>
+              </view>
+              <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+                <text>领口：{{goodItem.lingkou}}</text>
+              </view>
+              <view style="flex-basis: 36%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+                <text>体重：{{goodItem.tizhong}}</text>
+              </view>
+              <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+                <text>肩宽：{{goodItem.jiankuan}}</text>
+              </view>
+              <view style="flex-basis: 32%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+                <text>袖口：{{goodItem.xiuchang}}</text>
+              </view>
+              <view style="flex-basis: 36%; box-sizing: border-box; padding: 0 5px;font-size: 2.8vw;">
+                <text>身高：{{goodItem.shengao}}</text>
+              </view>
+            </view>
+          </van-card>
+        </view>
+      </view>
+      <!-- 选项：查看详情等 -->
+      <view style="height: 10vw;width: 80vw;padding: 1vw 5vw 1vw 5vw;border-bottom-left-radius: 4vw;border-bottom-right-radius: 4vw;border-top: 1rpx solid rgb(223, 223, 223);display: flex;align-items: center;position: relative;">
+        <text style="font-weight: 600;width: 12.5vw;font-size: 4vw;">实付：</text>
+        <text style="color: rgb(250, 162, 48);font-weight: 600;width: 17vw;font-size: 4vw;">￥{{item.totalPrice}}</text>
+        <view style="position: absolute;padding: 1vw 2vw 1vw ;height: 10vw;width: 56vw; right: 0vw;top: 0vw;display: flex;justify-content: space-around;align-items: center;color: rgb(80, 80, 80);">
+          <view style="width: 20vw;font-size: 3.8vw;height: 70%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(131, 131, 131);border-radius: 2.5vw;color: rgb(131, 131, 131);position: absolute;top: 15%;right: {{(item.status!==0&&item.status!==1)?5:30}}vw;" bind:tap="checkDetail" data-item="{{item}}">查看详情</view>
+          <view style="width: 20vw;font-size: 3.8vw;height: 70%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);position: absolute;top: 15%;right: 5vw;" wx:if="{{item.status==0||item.status==1}}">{{item.status==0?'申请退款':'确认收货'}}</view>
+        </view>
+        <!-- <text>查看详情</text> -->
+
+      </view>
+    </view>
+    <!-- 订单非空时底部空白 -->
+    <view style="width: 100vw;height: 10vh;" wx:if="{{totalOrder.length !== 0}}"></view>

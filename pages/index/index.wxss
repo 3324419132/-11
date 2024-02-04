@@ -1,0 +1,154 @@
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+
+.down {
+  width: 100%;
+  height: 500rpx;
+  margin-top: 10rpx;
+}
+
+.down-left {
+  width: 40%;
+  height: 500rpx;
+}
+
+.left-up {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+
+.down-right {
+  width: 60%;
+  height: 500rpx;
+  margin-left: 40%;
+  margin-top: -500rpx;
+}
+
+.up-text {
+  width: 130rpx;
+  height: 60rpx;
+  color: #617FFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1rpx #617FFB;
+  border-radius: 20rpx;
+}
+
+.up-text-no {
+  width: 130rpx;
+  height: 60rpx;
+  color: rgb(118, 120, 121);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1rpx rgb(118, 120, 121);
+  border-radius: 20rpx;
+}
+
+.up-text-reset {
+  width: 90rpx;
+  height: 60rpx;
+  color: #617FFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1rpx #617FFB;
+  border-radius: 20rpx;
+}
+
+.canvas-button {
+  width: 100%;
+  display: flex;
+  height: 60rpx;
+}
+
+.button-left {
+  width: 50%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.button-right {
+  width: 50%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+
+.button-left-click {
+  width: 70%;
+  height: 55rpx;
+  font-size: 30rpx;
+  border-radius: 30rpx;
+  color: #617FFB;
+  text-align: center;
+  border: #617FFB solid 1rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 25rpx;
+}
+
+.button-left-toClick {
+  width: 70%;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  border: #FF6060 solid 1rpx;
+  color: #FF6060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-right-reset {
+  width: 70%;
+  height: 55rpx;
+  font-size: 30rpx;
+  border-radius: 30rpx;
+  color: #617FFB;
+  text-align: center;
+  border: #617FFB solid 1rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 80rpx;
+}
+
+.scale {
+  position: relative;
+  top: 700rpx;
+  left: 50rpx;
+}
+
+.scale-img {
+  width: 200rpx;
+  height: 50rpx;
+}
+
+.canvas-text {
+  margin-left: 50rpx;
+}
+
+.up-text-left {
+  width: 80rpx;
+  height: 60rpx;
+  color: #617FFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1rpx #617FFB;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,62 @@
+<!--pages/user/userMsgEditor/userMsgEditor.wxml-->
+<!-- 头像 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;margin-top: 8vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;letter-spacing: 0.2vw;">头像:</text>
+  <view style="width: 12vw;height: 12vw;border-radius: 6vw;position: relative;margin-left: 2vw;">
+    <button bindtap="changeImage" class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar"></button>
+    <image class="avatar" src="{{user.imageUrl}}"></image>
+  </view>
+  <text style="margin-left: 2vw;color: rgb(160, 160, 160);font-size: 4vw;">（点击头像更换）</text>
+</view>
+<!-- 昵称 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;letter-spacing: 0.2vw;">昵称:</text>
+  <input placeholder="默认为（用户+手机号）" style="margin-left: 2vw;width: 60vw;height: 13vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;" value="{{user.nickName}}" bindinput="getInputContent" data-id="1" maxlength="11" />
+</view>
+<!-- 手机号 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;letter-spacing: 0.2vw;">账号:</text>
+  <text style="margin-left: 2vw;width: 60vw;height: 13vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;display: flex;align-items: center;color: rgb(126, 126, 126);" >{{user.phone}}</text>
+</view>
+<!-- 密码 -->
+<view style="display: flex;height: 20vw;width: 100vw;align-items: center;padding-left: 5vw;position: relative;">
+  <text style="font-size: 4.5vw;font-weight: 600;width: 20vw;letter-spacing: 0.2vw;">密码:</text>
+  <text style="margin-left: 2vw;width: 60vw;height: 13vw;background-color: #f6f6f6;padding-left: 4vw;border-radius: 2vw;display: flex;align-items: center;color: rgb(126, 126, 126);">密码不可见</text>
+  <image src="/images/user/edit{{isEditPassword?'_active':''}}.svg" style="height: 8vw;width: 8vw;position: absolute;top: 6vw;right: 15vw;" bind:tap="editPassword"></image>
+  
+</view>
+<!-- 密码修改项的显示 -->
+<view >
+  <!-- 旧密码 -->
+  <view style="display: {{!isEditPassword?'none':'flex'}}; align-items: center;padding-left: 6vw;margin-left: 4vw;margin-top: 2vw;">
+    <text style="color: red;margin-right: 1vw;">*</text>
+    <text style="width: 23vw;color: rgb(48, 48, 48);font-size: 4vw;">旧密码：</text>
+    <input style="width: 48vw;height: 8vw;border-bottom:1rpx solid #505050;padding-left: 4vw;" maxlength="15" placeholder="（当前的密码）"  bindinput="getInputContent" data-id="2" />
+  </view>
+  <!-- 新密码 -->
+  <view style="display: {{!isEditPassword?'none':'flex'}}; align-items: center;padding-left: 6vw;margin-left: 4vw;margin-top: 4vw;">
+    <text style="color: red;margin-right: 1vw;">*</text>
+    <text style="width: 23vw;color: rgb(48, 48, 48);font-size: 4vw;">新密码：</text>
+    <input style="width: 48vw;height: 8vw;border-bottom:1rpx solid #505050;padding-left: 4vw;color: {{inputError1?'red':'black'}};" maxlength="15" placeholder="（含数字、大小写字母）" bindblur="handleBlur" bindinput="getInputContent" data-id="3" />
+  </view>
+  <!-- 密码错误提示 -->
+  <view class="text{{inputError1?'_error':''}}" style="padding-left: 2vw;width: 50vw;margin-left: 38vw;margin-top: 2vw;">{{inputError1?'密码待规范':''}}</view>
+  <!-- 再次输入新密码 -->
+  <view style="display: {{!isEditPassword?'none':'flex'}};align-items: center;padding-left: 6vw;margin-left: 4vw;margin-top: 4vw;">
+    <text style="color: red;margin-right: 1vw;">*</text>
+    <text style="width: 23vw;color: rgb(48, 48, 48);font-size: 4vw;">再次输入：</text>
+    <input style="width: 48vw;height: 8vw;border-bottom:1rpx solid #505050;padding-left: 4vw;color: {{inputError2?'red':'black'}};" maxlength="15" placeholder="（与上一个密码一致）"  bindinput="getInputContent" data-id="4" />
+  </view>
+  <!-- 第二次输入密码错误提示 -->
+  <view class="text{{inputError2?'_error':''}}" style="padding-left: 2vw;width: 50vw;margin-left: 35vw;display: {{!isEditPassword?'none':'flex'}};">{{inputError2?'请与第一次保持相同哦~':''}}</view>
+</view>
+
+
+<!-- 底部，用于确认修改 -->
+<view style="position: fixed;bottom: 5vw;width: 100vw;height: 10vh;background-color: white;">
+  <view style="height: 12vw;width: 80vw;background: linear-gradient(to right, rgb(252, 197, 134),rgb(253, 179, 93),rgb(253, 179, 93),rgb(253, 188, 113),rgb(247, 200, 147));color: white;display: flex;justify-content: center;align-items: center;border-radius: 4vw;letter-spacing: 2rpx;position: absolute;bottom: 12vw;left: 10vw;font-size: 4.2vw;" bind:tap="confirmChange">
+  <text>确认修改</text>
+</view>
+
+
+</view>

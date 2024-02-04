@@ -1,0 +1,66 @@
+<!-- <view style="height: 50px"></view> -->
+<canvas type="webgl" id="webgl" style="width: 100%; height: 450px;"></canvas>
+<!-- <canvas type="webgl" id="webgl" style="width: 100%; height: 300px;"></canvas> -->
+
+
+<!-- 下面按钮部分 -->
+<view class="down">
+
+    <view class="down-left">
+
+
+        <view class="left-up">
+            <view class="up-text-left" bindtap="translateUpDown" data-index="0" bindlongpress="translateAnimateUpDwon"
+                bindtouchstart="touchStart" bindtouchend="touchEnd">放大</view>
+
+        </view>
+
+        <view class="left-up">
+            <view class="up-text-left" bindtap="translate" data-index="1" bindlongpress="translateAnimate"
+                bindtouchstart="touchStart" bindtouchend="touchEnd">左移</view>
+
+
+            <view class="up-text-reset" bindtap="restore">复原</view>
+
+            <view class="up-text-left" bindtap="translate" data-index="0" bindlongpress="translateAnimate"
+                bindtouchstart="touchStart" bindtouchend="touchEnd">右移</view>
+
+        </view>
+
+        <view class="left-up">
+            <view class="up-text-left" bindtap="translateUpDown" data-index="1" bindlongpress="translateAnimateUpDwon"
+                bindtouchstart="touchStart" bindtouchend="touchEnd">缩小</view>
+
+        </view>
+
+    </view>
+
+    <view class="down-right">
+
+        <!-- iconShow= 0旋转的四个按钮都能点击 1只能点击左右两个按钮，2只能点击上下两个按钮 -->
+        <view class="left-up">
+            <view class="up-text" wx:if="{{iconShow==0||iconShow==2}}" data-index="0" bindtap="rotateUpDown"
+                bindlongpress="rotateAnimateUpDwon" bindtouchstart="touchStart" bindtouchend="touchEnd">上旋转</view>
+            <view class="up-text-no" wx:if="{{iconShow==1}}" bindtouchend="touchEnd">上旋转</view>
+        </view>
+
+        <view class="left-up">
+            <view class="up-text" wx:if="{{iconShow==0||iconShow==1}}" data-index="0" bindtap="rotate"
+                bindlongpress="rotateAnimate" bindtouchstart="touchStart" bindtouchend="touchEnd">左旋转</view>
+            <view class="up-text-no" wx:if="{{iconShow==2}}">左旋转</view>
+
+            <view class="up-text-reset" bindtap="correct">复原</view>
+
+            <view class="up-text" wx:if="{{iconShow==0||iconShow==1}}" data-index="1" bindtap="rotate"
+                bindlongpress="rotateAnimate" bindtouchstart="touchStart" bindtouchend="touchEnd">右旋转</view>
+            <view class="up-text-no" wx:if="{{iconShow==2}}">右旋转</view>
+        </view>
+
+        <view class="left-up">
+            <view class="up-text" wx:if="{{iconShow==0||iconShow==2}}" data-index="1" bindtap="rotateUpDown"
+                bindlongpress="rotateAnimateUpDwon" bindtouchstart="touchStart" bindtouchend="touchEnd">下旋转</view>
+            <view class="up-text-no" wx:if="{{iconShow==1}}">下旋转</view>
+        </view>
+
+    </view>
+</view>

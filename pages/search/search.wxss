@@ -1,0 +1,110 @@
+/* pages/food/food.wxss */
+.search-container {
+  display: flex;
+  align-items: center;
+  /* background-color: #f0f0f0; */
+  /* border: 1px solid #ccc; */
+  border-radius: 25rpx;
+  padding: 10rpx;
+}
+.search-icon {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 10rpx;
+}
+.search-input {
+  flex: 1;
+  border:1px solid ;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  width: 90%;
+  padding: 15rpx;/* 增加内部填充 */
+}
+
+/* 商品展示栏 */
+.item{
+  padding:15rpx;
+  border-bottom: 1px solid gray;
+}
+
+swiper{
+  width: 100%;
+  height: calc(100vw *565/1001);  
+}
+image{
+  width: 100%;
+  /* height: 60%; */
+}
+.category-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.category-item {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 16px;
+  color: #333333;
+}
+
+.floor-container {
+  margin-top: 20px;
+}
+
+.floor-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.item {
+  flex-basis: calc(33.33% - 10px);
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.product-image {
+  width: 150px; /* 放大图片的宽度 */
+  height: 150px; /* 放大图片的高度 */
+}
+
+.product-name {
+  margin-top: 10px;
+  font-size: 18px; /* 放大文字的大小 */
+}
+
+.bottom_root{
+  display: flex;
+}
+
+.product-price {
+  flex: 1;
+  margin-top: 5px;
+  color: #ff0000;
+  font-size: 18px; /* 放大文字的大小 */
+  font-weight: bold;
+}
+
+.jiajian{
+  width: 40rpx;
+  height: 40rpx;
+}

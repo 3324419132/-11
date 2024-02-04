@@ -1,0 +1,117 @@
+/* 页面背景色 */
+.page {
+  background-color: #f0f0f0;
+}
+
+/* 顶部导航栏 */
+.tab-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(223, 116, 116);
+  box-shadow: 0 2rpx 4rpx rgba(118, 176, 241, 0.1);
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10rpx 0;
+  font-size: 80rpx; /* 增加字体大小 */
+  cursor: pointer;
+  color: #000;
+}
+
+/* 激活状态下的样式（蓝色字体） */
+.tab.active {
+  color: #007aff; /* 或者你喜欢的蓝色颜色 */
+}
+
+/* 订单列表样式 */
+.order-list {
+  margin-top: 10rpx;
+  padding: 10rpx;
+}
+
+.order-title{
+  padding: 12rpx;
+  background-color: #fff;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 40rpx; /* 增加字体大小 */
+  margin-bottom: 10rpx;
+}
+
+.order-detail{
+  width: 50%;
+  background-color: aquamarine;
+  font-size: large;
+}
+.order-item{
+  padding: 12rpx;
+  background-color: #fff;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 30rpx; /* 增加字体大小 */
+  margin-bottom: 10rpx;
+  /* display: flex; */
+  /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+  justify-content: space-between;
+  /* align-items: center; */
+  margin-bottom: 20rpx; /* 可选：添加一些垂直间距 */
+}
+.separator {
+  height: 1rpx;
+  background-color: #e0e0e0;
+  margin: 10rpx 0;
+}
+.order-item-details {
+  display: none;
+  padding: 12rpx;
+  background-color: #fff;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 20rpx;
+  margin-bottom: 10rpx;
+  transition: display 0.3s;
+}
+
+.order-item-details.active {
+  display: block;
+}
+text{
+  font-size: 170%;
+}
+/* 设置订单项容器的样式 */
+
+
+/* 单独设置名称和款式的样式 */
+.name-style {
+  flex: 1; /* 填充可用空间 */
+}
+
+/* 设置数量的样式 */
+.quantity {
+  font-weight: bold; /* 可选的，加粗字体 */
+}
+
+
+/* 单独设置名称和款式的样式 */
+.name-style {
+  flex: 1; /* 填充可用空间 */
+}
+
+/* 设置数量的样式 */
+.quantity {
+  font-weight: bold; /* 可选：加粗字体 */
+}
+
+/* 设置尺寸的样式 */
+.size {
+  color: #999; /* 可选：添加颜色以区分 */
+}

@@ -1,0 +1,34 @@
+<van-tabs type="line" sticky swipeable="true"  bind:change="onTabChange" active="{{ tabIndex }}">
+  <van-tab title="全部订单">
+    <!-- 搜索框 -->
+    <van-search
+      value="{{ serchContent }}"
+      placeholder="请输入订单编号或商品名"
+      show-action
+      bind:search="onSearch"
+      bind:cancel="onCancel"
+    />
+
+    <!-- 订单非空 -->
+    <orderItem orderList="{{totalOrder}}" bind:checkDetail="checkDetail"></orderItem>
+    <!-- 订单为空 -->
+    <emptyItm isShow="{{totalOrder.length === 0}}" imageUrl="/images/user/empty6.svg" title="~暂无宝藏~"></emptyItm>
+  </van-tab>
+  <van-tab title="已支付">
+      <!-- 订单非空 -->
+      <orderItem orderList="{{orderList1}}" bind:checkDetail="checkDetail"></orderItem>
+      <!-- 订单为空 -->
+      <emptyItm isShow="{{orderList1.length === 0}}" imageUrl="/images/user/empty.svg" title="~空空如也~"></emptyItm>
+  </van-tab>
+  <van-tab title="待收货">
+    <orderItem orderList="{{orderList2}}" bind:checkDetail="checkDetail"></orderItem>
+    <!-- 订单为空 -->
+    <emptyItm isShow="{{orderList2.length === 0}}" imageUrl="/images/user/empty2.svg" title="~肚子空空~"></emptyItm>
+  </van-tab>
+  <van-tab title="已完成">
+    <orderItem orderList="{{orderList3}}" bind:checkDetail="checkDetail"></orderItem>
+    <!-- 订单为空 -->
+    <emptyItm isShow="{{orderList3.length === 0}}" imageUrl="/images/user/empty4.svg" title="~真的饿了~"></emptyItm>
+  </van-tab>
+</van-tabs>
+

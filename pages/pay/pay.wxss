@@ -1,0 +1,54 @@
+.Pay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+.text{
+  color:red;
+  width: 100%;
+  line-height: 120rpx;
+  text-align: center;
+}
+/* 金额提示*/
+.Price {
+  top: 123rpx;
+  
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  font-size: 28px;
+  margin-bottom: 100rpx;
+}
+
+/* 支付方式选择样式 */
+.Ways {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff;
+  border: 1rpx solid #ddd;
+  margin-bottom: 10rpx;
+  border-radius: 5rpx;
+
+}
+.checkbox {
+  right: 10rpx;
+  margin-left: auto;
+}
+/* 确认付款按钮样式 */
+.OK {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  background-color: #f80707;
+  color: #fff;
+  
+  font-size: 35rpx;
+  position: fixed;
+  bottom: 0;
+}

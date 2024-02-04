@@ -1,0 +1,15 @@
+<!--pages/search/search.wxml-->
+<!--pages/food/food.wxml-->
+<view class="search-container">
+  <input bindconfirm="goSearch" confirm-type="search" bindinput="getSearch" class="search-input"  placeholder="请输入搜索关键词" ></input>
+  <image bindtap="goSearch" src="../../images/icon/search.png" class="search-icon"></image>
+</view>
+
+<!-- 搜索到的商品 -->
+<view class="product-list">
+    <view class='item' wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
+      <image src="{{item.picture}}" class="product-image"></image>
+      <view class="product-name">{{item.name}}</view>
+      <view class="product-price">{{item.price}}</view>
+    </view>
+  </view>

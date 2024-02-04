@@ -1,0 +1,77 @@
+<!-- 在购物车列表中显示CMS的cart表数据 -->
+
+
+
+<view class="shoppingCart">
+  <view class="shoppingCartItem" wx:for="{{cartData}}" wx:for-item="item" wx:for-index="index">
+    <!-- 显示商品的名称、款式、身高等信息 -->
+    <view class="floatLeft">
+      <label class="checkbox">
+        <checkbox checked="{{indexList[index]}}" bindtap="checkboxClick" data-index="{{index}}" />
+      </label>
+    </view>
+    
+   <!-- 显示商品图片等信息 -->
+   <view class="floatRight">
+      <view class="titleClass"> {{item.name}}</view>
+      <view class="styleClass"> {{item.style}}</view>
+      <view class="priceClass"> ￥{{item.price}}</view>
+      <view class="buttonContainer">
+        <!-- "展示详情"按钮 -->
+        <button class="showDetailButton" bindtap="toggleDetail" data-index="{{index}}">
+          {{detailList[index] ? '收起详情' : '展示详情'}}
+        </button>
+        <!-- 删除按钮 -->
+        <button class="deleteButton" bindtap="confirmDelete" data-index="{{index}}">删除</button>
+      </view>
+
+      <!-- 商品详情区域 -->
+      <view wx:if="{{detailList[index]}}" class="detailContainer">
+        <view class="shengaoClass"> 身高：{{item.shengao}}</view>
+        <view class="shengaoClass"> 体重：{{item.tizhong}}</view>
+        <view class="shengaoClass"> 后背：{{item.houbei}}</view>
+        <view class="shengaoClass"> 肩宽：{{item.jiankuan}}</view>
+        <view class="shengaoClass"> 袖长：{{item.xiuchang}}</view>
+        <view class="shengaoClass"> 领口：{{item.lingkou}}</view>
+      </view>
+    </view>
+    <!-- 功能区 -->
+    <view class="functionClass">
+      <view bindtap="numChangeClick" data-index="{{index}}" class="reduceBtn" data-id="1">-</view>
+      <view class="numClass">{{item.goodNum}}</view>
+      <view bindtap="numChangeClick" data-index="{{index}}" class="plusClass" data-id="2">+</view>
+    </view>
+  </view>
+  <view style="height: 20vh;width: 100vw;">
+  </view>
+</view>
+
+
+
+<view style="position: absolute;width: 100vw;height: 20vh;top: 35vh;left: 0vw;" wx:if="{{cartData[0]==undefined}}">
+  <view style="width: 100vw;padding: 1vw 0vw 1vw 0vw; display: flex;justify-content: center;">
+    <!-- <image src="/images/cart/cart.svg" style="width: 20vw;height: 20vw;"></image> -->
+    <text style="font-size: 8vw;color: rgb(209, 209, 209);">૮₍ ˃ ⤙ ˂ ₎ა</text>
+  </view>
+  <view style="display: flex;justify-content: center;align-items: center;color: rgb(230, 230, 230);font-size: 8vw;font-weight: 600;width: 100vw;height: 16vw;">购物车饿了哦~</view>
+</view>
+
+
+<!-- 底部显示栏 -->
+<view class="bottomView">
+
+  <view class="toPayLeft" style="width: 18vw;height: 100%;">
+    <view class="checkbox" style="width: 18vw;display: flex;align-items: center;">
+      <van-checkbox value="{{ isAllSelected }}" bind:change="selectAll">全选</van-checkbox>
+    </view>
+  </view>
+
+  <view class="toPayInfo" style="width: 46vw;margin-left: 4vw;">
+    共{{total}}件,总价:<text class="totalPrice">￥{{totalPrice}}</text>
+  </view>
+
+  <view class="toPay" bindtap="toCheckout" style="width: 27vw;height: 6vh; background: linear-gradient(to right, #f0b486, #fa7611,#f5964e,#f5964e,#f5964e);display: flex;align-items: center;margin-left: 1vw;">
+    结算
+  </view>
+    
+</view>

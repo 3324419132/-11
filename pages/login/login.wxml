@@ -1,0 +1,15 @@
+<!-- login.wxml -->
+<view class="login-container">
+  <view class="input-container" style="margin-top: 13vh;height: 8vh;display: flex;justify-content: center;">
+    <input placeholder="手机号" bindinput="getPhone" style="height: 5vh;width: 80vw;" />
+  </view>
+  <view class="input-container" style="height: 8vh;display: flex;justify-content: center;">
+    <input type="password" placeholder="密码" bindinput="getPassword" style="height: 5vh;width: 80vw;" />
+  </view>
+  <view style="width: 100vw;height: 2vh;position: relative;margin-top: 1vh;">
+    <navigator url="/pages/register/register" style="color: #007AFF;font-size: 3vh;position: absolute;right: 8vw;" class="zhuce">没有账号？点击注册</navigator>
+  </view>
+  <button bindtap="login" style="margin-top: 7vh;height: 8vh;width: 40vw;display: flex;justify-content: center;align-items: center;border-radius: 15rpx;">登录</button>
+
+
+</view>

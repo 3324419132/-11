@@ -1,0 +1,5 @@
+/* components/order/orderItem.wxss */
+.cardStyle{
+  border: 1rpx solid rgb(216, 216, 216);
+  background-color: rgb(248, 248, 248);
+}

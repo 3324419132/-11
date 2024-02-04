@@ -1,0 +1,132 @@
+<!-- 轮播图 展示不同衣服的不同视角 -->
+<swiper class="swiper-container" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+  <block wx:for="{{goodMsg.picture}}" wx:key="index">
+    <swiper-item>
+      <image class="swiper-image" src="{{item}}" mode="aspectFit"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 基本信息描述 -->
+<view class="goods-info-box">
+  <view class="goods-info-header">
+    <view class="product-price">￥{{goodMsg.price}}</view> 
+    <button class="model-button" bindtap="view3DModel">3D模型</button>
+  </view>
+  <view class="goods-info-body">
+    <view class="goods-name">名称：{{goodMsg.name}}</view>
+    <view class="favi">
+      <uni-icons type="star" size="18" color="gray"></uni-icons>
+    </view>
+  </view>
+  <view class="yf">快递：免运费</view>
+</view>
+
+<view class="separator"></view> 
+<!-- 添加分割线 -->
+<view class="infotext">—— - 详情介绍 - ——</view>
+
+
+
+
+
+<!-- 底部选项框 -->
+<view style="position: fixed;padding: 0vw 0vw 0vw 0vw;bottom: 0vw;">
+  <van-goods-action>
+    <van-goods-action-icon icon="chat-o" text="客服" open-type="contact" />
+    <van-goods-action-icon icon="cart-o" text="购物车" bind:click="navigatorToCart" />
+    <van-goods-action-button
+      text="加入购物车"
+      type="warning"
+      bind:click="openCartModal"
+      data-id="0"
+    />
+    <van-goods-action-button text="立即购买" bind:click="openCartModal" data-id="1" />
+  </van-goods-action>
+</view>
+
+
+
+<!-- 蒙版-->
+<view wx:if="{{showModal}}" class="modal" bind:tap="cancelModel">
+</view>
+
+<!-- 加入购物车/购买页面 -->
+<view style="height: 80vh;width: 96vw;left: 0vw;top: 10vh;background-color: white;border-radius: 2vw;padding: 4vw 2vw 2vw 2vw;position: fixed;top: {{showModal?18:100}}vh;transition-property: top;transition-duration: 0.5s;z-index: 5;">
+  <!-- 请选择款式字样 -->
+  <view style="width: 96vw;height: 8vw;display: flex;align-items: center;justify-content: center;font-size: 5vw;color: rgb(90, 90, 90);border-bottom: 1rpx solid rgb(163, 163, 163);">请选择款式</view>
+  <!-- 商品图片 -->
+  <view style="height: 25vw;width: 90%;padding-left: 4vw;display: flex;align-items: center;position: relative;">
+    <image src="/images/goods/emptyPicture.svg" style="height: 20vw;width: 20vw;" wx:if="{{imgIndex==-1}}"></image>
+    <text style="position: absolute;font-size: 4vw;color: rgb(150, 150, 150);margin-left: 2vw;" wx:if="{{imgIndex==-1}}">暂未选择</text>
+    <image src="{{goodMsg.picture[imgIndex]}}" style="height: 20vw;width: 20vw;" wx:if="{{imgIndex!=-1}}" ></image>
+    <text wx:if="{{imgIndex!=-1}}" style="color: rgb(248, 138, 64);position: absolute;bottom: 2vw;left: 27vw;font-size: 4.8vw;">￥{{goodMsg.price}}</text>
+    <text wx:if="{{imgIndex!=-1}}" style="color: rgb(87, 87, 87);position: absolute;top: 2vw;left: 27vw;font-size: 4.8vw;">{{goodMsg.name}}</text>
+  </view>
+  <!-- 款式选择 -->
+  <view style="margin-top: 3vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">款式：</text>
+    <picker style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 3vw;width: 50vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{goodMsg.style}}" value="{{imgIndex}}" bindchange="pickChange" data-id="1">{{imgIndex==-1?'-——-暂未选择-——- ':goodMsg.style[imgIndex]}}</picker>
+  </view>
+  <!-- 面料选择 -->
+  <view style="margin-top: 2vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">面料：</text>
+    <picker style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 3vw;width: 50vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{goodMsg.fabrics.name}}" value="{{fabricsIndex}}" bindchange="pickChange" data-id="2">{{fabricsIndex==-1?'-——-暂未选择-——- ':goodMsg.fabrics.name[fabricsIndex]}}</picker>
+  </view>
+  <!-- 身高和体重 -->
+  <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">身高：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{height}}" placeholder="30-230(cm)" bindinput="getInputContent" data-id="1" />
+    </view>
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;margin-left: 3vw;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">体重：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{weight}}" placeholder="20-110(kg)" bindinput="getInputContent" data-id="2" />
+    </view>
+  </view>
+  <!-- 肩宽和后背 -->
+  <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">肩宽：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{jiankuan}}" placeholder="0-60(cm)" bindinput="getInputContent" data-id="3" />
+    </view>
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;margin-left: 3vw;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">后背：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{houbei}}" placeholder="0-60(cm)" bindinput="getInputContent" data-id="4" />
+    </view>
+  </view>
+  <!-- 袖长和领口 -->
+  <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">袖长：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{xiuchang}}" placeholder="0-60(cm)" bindinput="getInputContent" data-id="5" />
+    </view>
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;margin-left: 3vw;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">领口：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{lingkou}}" placeholder="0-60(cm)" bindinput="getInputContent" data-id="6" />
+    </view>
+  </view>
+  <!-- 数量 -->
+  <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
+      <text style="color: white">*</text>
+      <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">数量：</text>
+      <button style="width: 5vw;height: 7vw;display: flex;justify-content: center;align-items: center;" bind:tap="reduceGoodNum">-</button>
+      <text style="font-size: 4.4vw;color: rgb(104, 104, 104);">{{goodNum}}</text>
+      <button style="width: 5vw;height: 7vw;display: flex;justify-content: center;align-items: center;" bind:tap="addGoodNum">+</button>
+    </view>
+    
+  </view>
+
+  <!-- 加入购物车 -->
+  <view style="height: 12vw;width: 60vw;margin-left: 20vw;margin-top: 10vw; background: linear-gradient(to right, rgb(252, 197, 134),rgb(253, 179, 93),rgb(253, 179, 93),rgb(253, 188, 113),rgb(247, 200, 147));color: white;display: flex;justify-content: center;align-items: center;border-radius: 4vw;letter-spacing: 2rpx;font-size: 4.2vw;transition-property: background;transition-duration: 0.5s;" bind:tap="confirmAddCart">{{type==0?'加入购物车':'立即购买'}}</view>
+
+</view>
+
