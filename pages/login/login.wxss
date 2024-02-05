@@ -1,39 +1,28 @@
+/* pages/test/test.wxss */
+page{
+  background-image: linear-gradient(to bottom,#fffcfb,#fdf4f1,#fdf2f0,#fde6e2);
+}
+input{
 
-
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100rpx;
+  height: 13vw;
+  font-size: 5vw;
+  padding-left: 3vw;
+  z-index: 1;
+}
+.text_error{
+  margin-top: 2vw;
+  height: 5vw;
+  line-height: 5vw;
+  color: red;
+  transition: all 0.5s;
+}
+.text{
+  color: red;
+  height: 0vw;
+  transition: all 1s;
 }
 
-.input-container {
-  width: 80%;
-  margin-bottom: 20rpx;
-}
-
-input {
-  width: 100%;
-  padding: 10rpx;
-  border: 1px solid #ccc;
-  border-radius: 5rpx;
-  outline: none;
-}
-
-button {
-  width: 80%;
-  padding: 10rpx;
-  background-color: #007aff;
-  color: #fff;
-  border: none;
-  border-radius: 5rpx;
-  text-align: center;
-  cursor: pointer;
-}
-
-button:active {
-  background-color: #0056b3;
-}
-.zhuce{
-  font-size:x-large
+.button_hovered{
+  background: linear-gradient(to right, #e7a491,#fcab92,#f3826e,#fa7a64);
+  color: #ffffff;
 }

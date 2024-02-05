@@ -107,7 +107,7 @@ Page({
   login(){
     var userInfo=this.data.userInfo
     if(userInfo==null||userInfo=='')wx.navigateTo({
-      url: '/pages/test/test?'+'type=1',
+      url: '/pages/login/login?'+'type=1',
     })
   },
   
@@ -121,7 +121,7 @@ Page({
     app.globalData.userLoggedIn = false;
     // 返回到登录页面或其他适当的操作
     // 如果有登录界面，可以跳转到登录界面
-    // wx.navigateTo({ url: '/pages/test/test' });
+    // wx.navigateTo({ url: '/pages/login/login' });
     // 也可以重新显示登录页面的内容，例如显示输入手机号和密码的表单
     this.setData({
       islogin:false
