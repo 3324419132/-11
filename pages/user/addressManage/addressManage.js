@@ -53,11 +53,13 @@ Page({
     if (manageStatus) {
       let itemsToDelete = addressList.filter((item, index) => indexList[index]);
       let deletePromises = itemsToDelete.map(item => {
+        console.log(item)
         return wx.cloud.callFunction({
           name: 'addressDelete',
           data: {
-            userId: app.globalData.userData.phone, // 或者其他用户ID标识
-            addressId: item._id
+            account: app.globalData.userData.phone, // 或者其他用户ID标识
+            addressId: item._id,
+            token:app.globalData.token
           }
         });
       });
@@ -71,8 +73,19 @@ Page({
             if (idx > -1) {
               addressList.splice(idx, 1);
             }
+            this.setData({
+              addressList:addressList
+            })
+            wx.showToast({
+              title: '地址删除成功',
+              icon:'success'
+            })
           } else {
             console.log('删除失败:', itemsToDelete[index]._id);
+            wx.showToast({
+              title: '地址删除失败',
+              icon:'error'
+            })
           }
         });
 
