@@ -150,6 +150,7 @@ Page({
     const images=this.data.goodMsg.picture
     const name=this.data.goodMsg.name
     const type=this.data.type
+    const _id=this.data.goodMsg._id
 
 
     console.log(images)
@@ -172,10 +173,10 @@ Page({
         price:price,
         name:name,
         goodNum:goodNum,
+        _id,
         userId:app.globalData.userData.phone
       }
       const token=app.globalData.token
-      const _id=this.data.goodMsg._id
       // 加入购物车
       if(type==0)wx.cloud.callFunction({
         name: 'addToCart',
@@ -220,7 +221,7 @@ Page({
           price:price,
           name:name,
           goodNum:goodNum,
-          
+          _id,
           userId:app.globalData.userData.userId
         }]
         console.log(item)

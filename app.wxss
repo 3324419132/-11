@@ -1,4 +1,13 @@
 /**app.wxss**/
+/* 设置滚动条的宽度 */
+::-webkit-scrollbar {
+  width: 0px; /* 设置滚动条的宽度 */
+}
+/* 设置滚动条的轨道背景色 */
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
 .container {
   height: 100%;
   display: flex;

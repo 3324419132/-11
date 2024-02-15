@@ -24,16 +24,17 @@ async function validateToken(userId, token) {
 }
 
 /**
- * 云函数主函数，用于分页获取商品数据
+ * 云函数主函数，用于分页获取商品数据，并支持模糊搜索
  * @param {Object} event - 云函数调用时传入的参数
  * @param {string} event.userId - 用户ID
  * @param {string} event.token - 用户登录凭证
  * @param {number} event.index - 分页的页数，从1开始
+ * @param {string} event.searchText - 搜索框的文本
  * @param {Object} context - 云函数调用上下文
  * @returns {Object} - 返回操作结果，包括 success（是否成功）、message（返回消息）、data（云数据库返回的数据）
  */
 exports.main = async (event, context) => {
-  const { userId, token, index } = event;
+  const { userId, token, index, searchText } = event;
   try {
     // 校验用户登录状态
     await validateToken(userId, token);
@@ -45,9 +46,23 @@ exports.main = async (event, context) => {
     const myIndex = (index == 0) ? 1 : index;
     const skipCount = (myIndex - 1) * pageSize;
 
+    if(searchText==null||searchText==undefined||searchText=='')return {
+      success: true,
+      message: '获取商品数据成功',
+      data: []
+    };
+    // 构建模糊查询条件
+    const searchCondition = {
+      name: cloud.database().RegExp({
+        regexp: searchText, // 此处使用正则表达式实现模糊匹配
+        options: 'i', // 不区分大小写
+      }),
+    };
+
     // 查询商品数据，按创建时间降序排列，限制获取 pageSize 条，跳过 skipCount 条
     const db = cloud.database();
     const result = await db.collection('good')
+      .where(searchCondition)
       .orderBy('createTime', 'desc')
       .skip(skipCount)
       .limit(pageSize)

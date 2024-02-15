@@ -71,7 +71,7 @@ Page({
     note1:'',// 截取内容
     goodList:[],
     defaultAddress:{},
-    pageName:'cart', // 从哪个页面抵达此页面
+    pageName:null, // 从哪个页面抵达此页面
     totalPrice:'',
     payWay:0,// 支付方式，0代表未选择，1代表微信支付，2代表银行卡支付
     isEditNote:false,// 是否编辑备注
@@ -188,6 +188,7 @@ Page({
     const defaultAddress=this.data.defaultAddress
     const note=this.data.note
     const token=app.globalData.token
+    const pageName=this.data.pageName
 
     // 调用云函数保存或更新订单数据
     wx.cloud.callFunction({
@@ -212,8 +213,19 @@ Page({
           console.log('订单数据保存成功');
 
           // 清除购物车里的数据
-          this.deleteCartDB(userId,token)
-
+          if(pageName=='cart')this.deleteCartDB(userId,token)
+          else {
+            wx.showToast({
+              title: '下单成功',
+              icon:'success'
+            })
+            .then(()=>{
+              setTimeout(()=>{
+                wx.navigateBack()
+              },1000)
+            })
+            
+          }
         } else {
           console.error('订单数据保存失败:', message);
           wx.showToast({
@@ -304,6 +316,7 @@ Page({
       goodList:items||[],
       totalPrice:totalPrice
     })
+    console.log(this.data.goodList)
     // wx.setStorageSync(app.globalData.storageUrl+'goodList', items)
 
     // this.setData({

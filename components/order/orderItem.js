@@ -36,5 +36,12 @@ Component({
       this.triggerEvent("checkDetail",{orderItem:item})
       
     },
+    // 改变状态
+    changeStatus(e){
+      const status =e.currentTarget.dataset.status
+      const index=e.currentTarget.dataset.index
+      const _id=e.currentTarget.dataset.id
+      this.triggerEvent("changeStatus",{status,index,_id})
+    }
   }
 })

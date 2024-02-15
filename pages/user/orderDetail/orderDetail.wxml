@@ -41,9 +41,13 @@
   <!-- 订单选项 -->
   <!-- 选项：查看详情等 -->
   <view style="height: 10vw;width: 86vw;padding: 1vw 5vw 1vw 5vw;display: flex;align-items: center;position: relative;margin-top: 0vw;margin-bottom: 4vw;">
-    <view style="position: absolute;padding: 1vw 2vw 1vw ;height: 10vw;width: 56vw; right: 0vw;top: 0vw;display: flex;justify-content: space-around;align-items: center;color: rgb(80, 80, 80);">
-      <view style="width: 24vw;font-size: 3.8vw;height: 70%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);position: absolute;top: 15%;right: {{(item.status!==0&&item.status!==1)?5:30}}vw;">加入购物车</view>
-      <view style="width: 20vw;font-size: 3.8vw;height: 70%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);position: absolute;top: 15%;right: 5vw;" wx:if="{{item.status==0||item.status==1}}">{{item.status==0?'申请退款':'确认收货'}}</view>
+    <view style="position: absolute;padding: 1vw 2vw 1vw 0vw ;height: 10vw;width: 56vw; right: 2vw;top: 0vw;display: flex;align-items: center;color: rgb(80, 80, 80);">
+      <!-- 申请退款 -->
+      <view style="width: 22vw;font-size: 3.8vw;height: 75%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);margin-left: auto;" wx:if="{{orderItem.status==0||orderItem.status==1}}" bind:tap="changeStatus" data-id="1">申请退款</view>
+      <!-- 确认收货 -->
+      <view style="width: 22vw;font-size: 3.8vw;height: 75%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);margin-left: auto;" wx:if="{{orderItem.status==1}}" bind:tap="changeStatus" data-id="2">确认收货</view>
+      <!-- 加入购物车 -->
+      <view style="width: 24vw;font-size: 3.8vw;height: 75%;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(247, 113, 23);border-radius: 2.5vw;color: rgb(247, 113, 23);margin-left: auto;" wx:if="{{orderItem.status==2||orderItem.status==3||orderItem.status==4||orderItem.status==0}}" bind:tap="addCart" >加入购物车</view>
     </view>
     <!-- <text>查看详情</text> -->
 
@@ -53,21 +57,44 @@
   <!-- 订单状态 -->
   <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">状态：</view>
-    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(141, 141, 141);">{{orderItem.status==0?'已付款':orderItem.status==1?'待收货':'已完成'}}</view>
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(141, 141, 141);">{{orderItem.status==0?'已付款':orderItem.status==1?'待收货':orderItem.status==2?'已完成':orderItem.status==3?'退款中':'退款成功'}}</view>
   </view>
 
+  <!-- 钱款返回 -->
+  <!-- <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;" wx:if="{{orderItem.status==4}}">
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">钱款去向：</view>
+    <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(141, 141, 141);"></view>
+  </view> -->
+  <van-collapse value="{{ activeNames }}" bind:change="onChange" custom-class="collapseClass" wx:if="{{orderItem.status==4}}">
+    <van-collapse-item title="钱款去向：" name="1" custom-class="collapseItemClass" size="large">
+      <view>
+        <view style="width: 90%;display: flex;justify-content: space-between;margin-top: 2vw;margin-left: 5%;margin-bottom: 2vw;">
+          <text style="font-size: 4vw;font-weight: 600;color: rgb(90, 90, 90);">退回银行卡（中国农业银行尾号5079）</text>
+          <text style="font-size: 4vw;font-weight: 600;color: orange;">￥{{orderItem.totalPrice}}</text>
+        </view>
+        <van-steps
+          steps="{{ steps }}"
+          active="{{ active }}"
+          direction="vertical"
+          active-color="#07c160"
+        />
+
+      </view>
+    </van-collapse-item>
+  </van-collapse>
+
   <!-- 订单总价 -->
-  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+  <view style="position: relative;height: 12vw;width: 94vw;font-size: 4.2vw;border-bottom: 1rpx solid rgb(241, 241, 241);">
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">总价：</view>
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(250, 162, 48);">￥{{orderItem.totalPrice}}</view>
   </view>
   <!-- 订单减免 -->
-  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+  <view style="position: relative;height: 12vw;width: 94vw;font-size: 4.2vw;border-bottom: 1rpx solid rgb(241, 241, 241);">
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">减免：</view>
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(250, 105, 48);">￥{{orderItem.reduction}}</view>
   </view>
   <!-- 订单实付 -->
-  <view style="position: relative;height: 10vw;width: 94vw;font-size: 4.2vw;">
+  <view style="position: relative;height: 12vw;width: 94vw;font-size: 4.2vw;">
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-left: 2vw;top: 0vw;left: 0vw;position: absolute;">实付：</view>
     <view style="width: 30vw;height: 100%;display: flex;align-items: center;padding-right: 2vw;top: 0vw;right: 0vw;position: absolute;justify-content: flex-end;color: rgb(250, 162, 48);">￥{{orderItem.totalPrice-orderItem.reduction}}</view>
   </view>
@@ -107,10 +134,10 @@
 
 
 <!-- 底部选项 -->
-<view style="position: fixed;width: 100vw;bottom: 0vh;left: 0vw;background-color: white;display: flex;justify-content: flex-end;align-items: center;padding-top: 3vw;padding-bottom: 6vw;">
+<view style="position: fixed;width: 100vw;bottom: 0vh;left: 0vw;background-color: white;display: flex;justify-content: flex-end;align-items: center;padding-top: 3vw;padding-bottom: 6vw;border-top: 1rpx solid rgb(231, 231, 231);">
   <view style="padding: 2vw 4vw 2vw 4vw; margin-left: 1vw;margin-right: 1vw;border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;border: 1rpx solid rgb(122, 122, 122);color: rgb(82, 82, 82);" bind:tap="checkLogistics">查看物流</view>
   <view style="padding: 2vw 4vw 2vw 4vw;margin-left: 1vw;margin-right: 1vw;border: 1rpx solid rgb(122, 122, 122);color: rgb(82, 82, 82);border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;">联系客服</view>
-  <view style="padding: 2vw 4vw 2vw 4vw;margin-left: 1vw;margin-right: 1vw;border: 1rpx solid rgb(247, 113, 23);color: rgb(247, 113, 23); border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;">加入购物车</view>
+  <view style="padding: 2vw 4vw 2vw 4vw;margin-left: 1vw;margin-right: 1vw;border: 1rpx solid rgb(247, 113, 23);color: rgb(247, 113, 23); border-radius: 4vw;font-size: 4vw;display: flex;align-items: center;justify-content: center;" bind:tap="addCart">加入购物车</view>
   
 </view>
 

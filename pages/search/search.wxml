@@ -1,15 +1,35 @@
 <!--pages/search/search.wxml-->
-<!--pages/food/food.wxml-->
-<view class="search-container">
-  <input bindconfirm="goSearch" confirm-type="search" bindinput="getSearch" class="search-input"  placeholder="请输入搜索关键词" ></input>
-  <image bindtap="goSearch" src="../../images/icon/search.png" class="search-icon"></image>
+<view style="background-color: white;position: fixed;top: 0vh;z-index: 4;">
+  <van-search
+    value="{{ searchText }}"
+    placeholder="请输入搜索关键词"
+    show-action
+    bind:search="onSearch"
+    bind:change="onChange"
+    bind:cancel="onCancel"
+    custom-class="searchClass"
+  />
+  <text style="padding-left: 4vw;font-size: 3.5vw;color: rgb(138, 138, 138);z-index: 4;width: 96vw;background-color: white;">已搜索到{{type==0?goodList.length:orderList.length}}项</text>
+  <view style="height: 1vw;"></view>
+</view>
+<view style="height: 10vh;"></view>
+<view wx:for="{{goodList}}" wx:key="index" style="width: 100vw;height: 15vh;margin-top: 5vw;margin-bottom: 2vw;display: flex;justify-content: center;align-items: center;">
+  <van-card
+    price="{{item.price}}"
+    desc="描述信息"
+    title="{{item.name}}"
+    thumb="{{ item.picture[0] }}"
+    custom-class="custom-class"
+    bind:tap="goToGoods2"
+    data-index="{{index}}"
+  />
+</view>
+<!-- 订单非空 -->
+<orderItem orderList="{{orderList}}" bind:checkDetail="checkDetail" bind:changeStatus="changeStatus"></orderItem>
+
+<!-- 空白，用于视图显示 -->
+<view style="width: 100vw;height: 10vh;display: flex;justify-content: center;align-items: center;color: rgb(133, 133, 133);">
+  {{isReachBottom?'已经到底了哦~':''}}
 </view>
 
-<!-- 搜索到的商品 -->
-<view class="product-list">
-    <view class='item' wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
-      <image src="{{item.picture}}" class="product-image"></image>
-      <view class="product-name">{{item.name}}</view>
-      <view class="product-price">{{item.price}}</view>
-    </view>
-  </view>
+<van-empty image="search" description="还未搜索哦~" wx:if="{{goodList.length==0&&orderList.length==0}}" />

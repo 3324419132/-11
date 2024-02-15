@@ -39,13 +39,13 @@
     <!-- 必须是button 不能是text否则无法点击跳转 -->
     <view class="right_arrow"></view>
   </view>
-  <view class="item" style="padding: 0vw 5vw 0vw 0vw">
+  <!-- <view class="item" style="padding: 0vw 5vw 0vw 0vw">
     <button class="button" style="width: 94vw;padding:5vw 0vw 5vw 5vw;" open-type="feedback">反馈建议</button>
     <view class="right_arrow"></view>
-  </view>
-  <view class="item" bindtap="admindd">
+  </view> -->
+  <!-- <view class="item" bindtap="admindd">
     <view class="button">管理员登录</view>
     <view class="right_arrow"></view>
-  </view>
+  </view> -->
   <button bindtap="loginOut" class="login_out" wx:if="{{islogin}}">退出登录</button>
 </view>

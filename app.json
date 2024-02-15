@@ -21,7 +21,8 @@
     "pages/user/addressEdit/addressEdit",
     "pages/user/userMsgEditor/userMsgEditor",
     "pages/user/orderDetail/orderDetail",
-    "pages/user/orderLogistics/orderLogistics"
+    "pages/user/orderLogistics/orderLogistics",
+    "pages/test/test"
 
 
   ],
@@ -29,8 +30,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#ff2200",
     "navigationBarTitleText": "沂蒙小棉袄",
-    "navigationBarTextStyle":"white",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle":"white"
+
     
   },
   "tabBar": {

@@ -18,20 +18,10 @@ Page({
   },
   //ke:出发搜索事件
   goSearch(e){
-    console.log("searchKey:",searchKey)
-    // const searchKey = this.data.searchKey; // 获取搜索词
-    if (searchKey && searchKey.length>0){
+    // 0代表是首页查询，1代表的订单查询
      wx.navigateTo({
-       url: '/pages/search/search?searchKey=' + searchKey,
+       url: '/pages/search/search?type=0',
      })
-
-      
-    }else{
-      wx.showToast({
-        icon:'none',
-        title: '搜索词为空',
-      })
-    }
   },
 
 
