@@ -21,8 +21,7 @@
     "pages/user/addressEdit/addressEdit",
     "pages/user/userMsgEditor/userMsgEditor",
     "pages/user/orderDetail/orderDetail",
-    "pages/user/orderLogistics/orderLogistics",
-    "pages/test/test"
+    "pages/user/orderLogistics/orderLogistics"
 
 
   ],
