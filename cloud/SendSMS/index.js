@@ -1,4 +1,7 @@
 // sendSMS/index.js
+
+
+
 const cloud = require('wx-server-sdk');
 cloud.init(); // 初始化云环境
 const db = cloud.database(); // 获取数据库的引用

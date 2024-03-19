@@ -1,4 +1,16 @@
 // registerUser/index.js
+/**
+  功能：用户注册
+  参数：
+  phone: 用户手机号
+  password: 用户密码
+  identification: 用户验证码
+  defaultImageUrl: 用户默认头像 URL
+  返回：
+  success: 注册结果，true 表示注册成功，false 表示注册失败
+  message: 注册结果消息
+  error: 如果注册失败，返回错误信息；否则，为空
+*/
 const cloud = require('wx-server-sdk');
 cloud.init();
 const db = cloud.database();

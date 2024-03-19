@@ -43,18 +43,7 @@ async function validateToken(account, token) {
   }
 }
 
-/**
- * 云函数主函数，用于添加地址
- * @param {Object} event - 云函数调用时传入的参数
- * @param {string} event.account - 用户账号
- * @param {string} event.name - 收货人姓名
- * @param {string} event.phone - 收货人电话
- * @param {Array} event.address - 收货地址数组
- * @param {boolean} event.isDefault - 是否设为默认地址
- * @param {string} event.token - 用户身份验证 token
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 success（是否成功）、message（操作结果消息）和 newAddress（新添加的地址信息）
- */
+
 exports.main = async (event, context) => {
   const db = cloud.database();
   const addressCollection = db.collection('address');

@@ -1,0 +1,14 @@
+<!--pages/forgetpws/forgetpws.wxml-->
+<view class="forgot-password-container">
+  <view class="input-container">
+    <input placeholder="请输入注册时的手机号" bindinput="inputPhone" />
+  </view>
+  <view class="input-container">
+    <input type="password" placeholder="新密码至少6位，包含数字和字母" bindinput="inputPassword" />
+  </view>
+  <view class="input-container">
+    <input type="password" placeholder="确认新密码" bindinput="inputConfirmPassword" />
+  </view>
+  <button bindtap="resetPassword">重置密码</button>
+  <text>已记起密码？</text><navigator url="/pages/login/login" style="color: #007AFF;">点击登录</navigator>
+</view>

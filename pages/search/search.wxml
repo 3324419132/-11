@@ -16,7 +16,7 @@
 <view wx:for="{{goodList}}" wx:key="index" style="width: 100vw;height: 15vh;margin-top: 5vw;margin-bottom: 2vw;display: flex;justify-content: center;align-items: center;">
   <van-card
     price="{{item.price}}"
-    desc="描述信息"
+    desc="点击查看"
     title="{{item.name}}"
     thumb="{{ item.picture[0] }}"
     custom-class="custom-class"

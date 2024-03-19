@@ -1,18 +1,5 @@
 // 云函数入口文件: addressUpdate.js
-/**
- * 功能：更新地址
- * 参数：
- * - _id: 要更新的地址ID
- * - account: 用户账号
- * - name: 收货人姓名
- * - phone: 收货人电话
- * - address: 收货地址
- * - isDefault: 是否设为默认地址
- * - token: 用户身份验证 token
- * 返回：
- * - success: 操作是否成功
- * - message: 操作结果消息
- */
+
 
 const cloud = require('wx-server-sdk');
 

@@ -30,20 +30,7 @@ function encryptPassword(password) {
   return hash.digest('hex');
 }
 
-/**
- * 云函数主函数，用于更新用户信息
- * @param {Object} event - 云函数调用时传入的参数
- * @param {string} event._id - 用户ID
- * @param {number} event.authority - 用户权限
- * @param {string} event.phone - 用户手机号
- * @param {string} event.imageUrl - 用户头像地址
- * @param {string} event.nickName - 用户昵称
- * @param {number} event.type - 操作类型，1表示需要更新密码，0表示不更新密码
- * @param {string} event.password - 新密码（如果需要更新密码）
- * @param {string} event.oldPassword - 旧密码（用于验证身份）
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 code（操作结果代码），message（操作结果消息）和 data（更新的数据条数）
- */
+
 exports.main = async (event, context) => {
   const { _id, authority, phone, imageUrl, nickName, type, password, oldPassword } = event;
 

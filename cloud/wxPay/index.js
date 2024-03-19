@@ -113,15 +113,7 @@ function getOpenId() {
   return openid;
 }
 
-/**
- * 云函数主函数，用于生成订单编号并发起微信支付
- * @param {Object} event - 云函数调用时传入的参数
- * @param {string} event.phoneNumber - 用户手机号
- * @param {string} event.token - 用户身份验证 token
- * @param {number} event.totalAmount - 总金额
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 success（是否成功）、data（生成的订单编号）、payParams（微信支付参数）
- */
+
 exports.main = async (event, context) => {
   const { phoneNumber, token, totalAmount } = event;
 

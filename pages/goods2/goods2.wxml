@@ -21,10 +21,15 @@
   <view class="yf">快递：免运费</view>
 </view>
 
-<view class="separator"></view> 
 <!-- 添加分割线 -->
+<view class="separator"></view> 
 <view class="infotext">—— - 详情介绍 - ——</view>
-
+<!-- 详情主题 -->
+<view style="width: 100w;padding: 5vh 5vw 20vh 5vw; display: flex; flex-direction: column; align-items: center;">
+  <view wx:for="{{goodMsg.detailImages}}" wx:key="index" style="margin-bottom: 10px;height: auto;">
+    <image src="{{item}}" style="width: 80vw;  max-width: 100vw; max-height: 50vh;" />
+  </view>
+</view>
 
 
 

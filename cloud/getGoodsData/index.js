@@ -1,12 +1,13 @@
-const cloud = require('wx-server-sdk');
-cloud.init();
-
 /**
  * 校验用户登录状态的函数
  * @param {string} userId - 用户ID
  * @param {string} token - 用户登录凭证
  * @returns {boolean} - 返回用户登录状态是否有效
  */
+
+const cloud = require('wx-server-sdk');
+cloud.init();
+
 async function validateToken(userId, token) {
   try {
     const result = await cloud.callFunction({

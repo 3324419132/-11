@@ -26,6 +26,7 @@ async function validateToken(userId, token) {
   }
 }
 
+
 exports.main = async (event, context) => {
   const { userId, token, _id } = event;
 

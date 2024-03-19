@@ -23,14 +23,7 @@ async function validateToken(userId, token) {
   }
 }
 
-/**
- * 云函数主函数，用于获取购物车数据（不分页）
- * @param {Object} event - 云函数调用时传入的参数
- * @param {string} event.userId - 用户ID
- * @param {string} event.token - 用户登录凭证
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 success（是否成功）、message（返回消息）、data（云数据库返回的数据）
- */
+
 exports.main = async (event, context) => {
   const { userId, token } = event;
 

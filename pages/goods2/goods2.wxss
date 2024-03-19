@@ -3,6 +3,8 @@
   font-size: 40rpx;
 }
 
+
+
 /* pages/goods/goods.wxss */
 .swiper-container {
   width: 100%; /* 设置轮播窗口的宽度为整个视口宽度 */

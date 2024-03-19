@@ -23,15 +23,7 @@ async function validateToken(userId, token) {
   }
 }
 
-/**
- * 云函数主函数，用于将数据添加至云数据库的 cart 集合中
- * @param {Object} event - 云函数调用时传入的参数
- * @param {Object} event.cartData - 待添加的购物车数据
- * @param {string} event.token - 用户登录凭证
- * @param {string} event._id - 商品ID
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 success（是否成功）、message（返回消息）、data（云数据库返回的数据）
- */
+
 exports.main = async (event, context) => {
   const { cartData, token, _id } = event;
   

@@ -24,13 +24,7 @@ async function validateToken(phone, token) {
   }
 }
 
-/**
- * 查询物流信息
- * @param {string} number - 物流单号
- * @param {string} phone - 用户账号
- * @param {string} token - 用户身份验证 token
- * @returns {object} - 查询结果
- */
+
 exports.main = async (event, context) => {
   const { number, phone, token } = event;
   const appCode = process.env.appCode;

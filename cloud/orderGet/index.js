@@ -38,14 +38,7 @@ async function validateToken(phone, token) {
   }
 }
 
-/**
- * 云函数主函数，用于获取用户的订单列表
- * @param {Object} event - 云函数调用时传入的参数
- * @param {string} event.phone - 用户账号
- * @param {string} event.token - 用户身份验证 token
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 success（是否成功）、data（获取的订单列表数据）和 message（操作结果消息）
- */
+
 exports.main = async (event, context) => {
   const db = cloud.database();
   const orderCollection = db.collection('dingdan');

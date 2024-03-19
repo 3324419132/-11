@@ -29,22 +29,7 @@ async function validateToken(userId, token) {
   }
 }
 
-/**
- * 云函数主函数，用于存储或更新订单数据
- * @param {Object} event - 云函数调用时传入的参数
- * @param {string} event.userId - 用户ID
- * @param {string} event.orderId - 订单ID
- * @param {number} event.totalPrice - 订单总金额
- * @param {number} event.status - 订单状态
- * @param {Array} event.items - 订单商品列表
- * @param {string} event.consignee - 收货人姓名
- * @param {string} event.phone - 收货人手机号
- * @param {Array} event.address - 收货地址
- * @param {string} event.notes - 订单备注
- * @param {string} event.token - 用户身份验证 token
- * @param {Object} context - 云函数调用上下文
- * @returns {Object} - 返回操作结果，包括 success（是否成功）和 message（操作结果消息）
- */
+
 exports.main = async (event, context) => {
   const { userId, orderId, totalPrice, status, items, consignee, phone, address, notes, token,reduction } = event;
 

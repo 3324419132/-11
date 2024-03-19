@@ -2,6 +2,7 @@
   "pages":[
     "pages/login/login",
     "pages/register/register",
+    "pages/forgetpws/forgetpws",
   
 
     "pages/home/home",
