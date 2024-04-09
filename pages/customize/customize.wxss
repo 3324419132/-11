@@ -1,0 +1,53 @@
+/* pages/customize/customize.wxss */
+
+/* 底部结算栏 */
+.bottomView {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  background-color: rgba(255, 255, 255, 0.9); /* 使用透明度 */
+  padding: 20rpx;
+  border-top: 1rpx solid #ddd;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 4;
+  margin-top: 20rpx; /* 增加上边距 */
+}
+
+
+/* 全选复选框 */
+.toPayLeft {
+  display: flex;
+  align-items: center;
+}
+
+/* 结算按钮 */
+.toPay {
+  background-color: rgb(72, 170, 7);
+  color: #fff;
+  font-size: 5vw;
+  font-weight: bold;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: c;
+}
+.totalPrice {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #f00;
+  width: 15vw;
+}
+
+
+
+.bleft{
+  height: 40px;
+  width: 20%;
+  color: rgba(240, 238, 238, 0.925);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right top, #f89a3c,#f09e4c,#e07911,#d66c03,#ca6805,#d17110,#e4770a,#e4b381,#e4b381);
+}

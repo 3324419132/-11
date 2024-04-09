@@ -102,7 +102,7 @@
 }
 
 /* 结算按钮 */
-.toPay {
+.toPay{
   background-color: rgb(72, 170, 7);
   color: #fff;
   font-size: 5vw;

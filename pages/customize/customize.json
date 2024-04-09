@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "emptyItem":"/components/empty/emptyItem",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-stepper": "@vant/weapp/stepper/index"
+  }
+}

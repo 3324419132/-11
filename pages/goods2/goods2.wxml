@@ -93,7 +93,7 @@
     </view>
   </view>
   <!-- 肩宽和后背 -->
-  <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+  <!-- <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
     <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
       <text style="color: red;font-size: 4.6vw;">*</text>
       <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">肩宽：</text>
@@ -104,9 +104,9 @@
       <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">后背：</text>
       <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{houbei}}" placeholder="0-60(cm)" bindinput="getInputContent" data-id="4" />
     </view>
-  </view>
+  </view> -->
   <!-- 袖长和领口 -->
-  <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
+  <!-- <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
     <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
       <text style="color: red;font-size: 4.6vw;">*</text>
       <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">袖长：</text>
@@ -117,7 +117,7 @@
       <text style="font-size: 4.6vw;color: rgb(82, 82, 82);">领口：</text>
       <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 10vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{lingkou}}" placeholder="0-60(cm)" bindinput="getInputContent" data-id="6" />
     </view>
-  </view>
+  </view> -->
   <!-- 数量 -->
   <view style="margin-top: 1vw;width: 90vw;padding: 0vw 1vw 0vw 5vw;display: flex;align-items: center;">
     <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">

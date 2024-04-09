@@ -11,6 +11,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/customize/customize",
+          "pathName": "pages/customize/customize",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/home/home",
+          "pathName": "pages/home/home",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/test/test",
           "pathName": "pages/test/test",
           "query": "",

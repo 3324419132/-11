@@ -10,6 +10,8 @@
     "pages/goods2/goods2",
     "pages/index/index",
 
+    "pages/customize/customize",
+
     "pages/cart/cart",
     "pages/checkout/checkout",
     "pages/pay/pay",
@@ -46,7 +48,14 @@
       "text": "购物车",
       "iconPath": "/images/tabs/shopping-cart.png",
       "selectedIconPath": "/images/tabs/shopping-cart-active.png"
-    },{
+    },
+    {
+      "pagePath": "pages/customize/customize",
+      "text": "定制",
+      "iconPath": "/images/customize/customize.png",
+      "selectedIconPath": "/images/customize/customize-selected.png"
+    },
+    {
 
       "pagePath": "pages/user/userPage/userPage",
       "text": "个人信息",

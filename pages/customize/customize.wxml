@@ -1,0 +1,156 @@
+<!--pages/customize/customize.wxml-->
+<view style="height: 40px;width: 100%;display: flex;justify-content: center;align-items: center;color: white;background-color: rgb(248, 130, 20);position: relative;">
+  <view style="position: absolute;left: 0vw;height: 40px;width: 40px;display: flex;justify-content: center;align-items: center;font-size: 30px;" bind:tap="showRules">
+    <image src="/images/customize/toast.svg" style="height: 20px;width: 20px;"></image>
+  </view>
+  个人定制方案
+  <view style="position: absolute;right: 0vw;height: 40px;width: 40px;display: flex;justify-content: center;align-items: center;font-size: 30px;" bind:tap="showAddPage">
+    +
+  </view>
+</view>
+
+<!-- 空白提示 -->
+<emptyItem title="开启个性化定制~" imageUrl="/images/customize/hi.png" wx:if="{{customizeData[0]==null}}"></emptyItem>
+
+<view wx:for="{{customizeData}}" wx:key="index" style="width: 96vw;padding: 5px 0vw 5px 0vw;height: 12vh;margin-left: 2vw;margin-top: 10px;margin-bottom: 10px;display: flex;">
+  <view style="width: 10%;height: 100%;display: flex;align-items: center;justify-content: center;margin-right: 3%;">
+    <checkbox style="width:18px;height:18px;border-radius: 10px;" checked="{{item.checked}}" bindchange="checkboxChange"></checkbox>
+  </view>
+  <view style="width: 65%;height: 100%;border-top: 1rpx solid rgb(201, 201, 201);border-bottom: 1rpx solid rgb(201, 201, 201);border-left: 1rpx solid rgb(201, 201, 201);border-bottom-left-radius: 10px;border-top-left-radius: 10px;position: relative;">
+    <view style="height: 20px;width: 94%;margin-top: 5px;margin-left: 6%;font-weight: 700;font-size: 20px;color: rgb(112, 112, 112);">{{item.name}}</view>
+    <!-- <view style="height: 20px;width: 94%;margin-top: 10px;margin-left: 6%;color: orange;font-size: 15px;"><text>￥</text>{{item.price}}</view> -->
+    <view style="height: 20px;width: 94%;margin-top: 5px;margin-left: 6%;display: flex;position: absolute;bottom: 8px;">
+      <text style="color: orange;margin-right: 25px;width: 20%;">￥{{item.price}}</text>
+      <view style="width: 80%;justify-content: space-evenly;display: flex;">
+        <text style="text-decoration: underline;cursor: pointer;color: rgb(136, 136, 136);font-size: 14px;">查看详情</text>
+        <text style="text-decoration: underline;cursor: pointer;color: rgb(136, 136, 136);font-size: 14px;">修改方案</text>
+      </view>
+    </view>
+  </view>
+  <view style="width: 20%;height: 100%;border-top: 1rpx solid rgb(201, 201, 201);border-bottom: 1rpx solid rgb(201, 201, 201);border-right: 1rpx solid rgb(201, 201, 201);border-bottom-right-radius: 10px;border-top-right-radius: 10px;display: flex;align-items: center;justify-content: center;">
+    <van-stepper value="{{ item.num }}" bind:change="onChange" input-width="20px" button-size="16px" />
+  </view>
+</view>
+
+
+<!-- 遮掩层 -->
+<view style="position: fixed;top: 0vh;height: 100vh;width: 100vw;background-color: black;opacity: 0.8;z-index: 5;" wx:if="{{editStatus}}"  bind:tap="closeCustomizeData"></view>
+
+<!-- 添加页面 -->
+<view style="position: fixed;transition: bottom; transition-duration: 0.5s;height: 90vh;width: 97vw;bottom: {{editStatus?0:-100}}vh;z-index: 7;border-top-left-radius: 15px;border-top-right-radius: 15px;background-color: white;padding: 6px;">
+  <!-- 请选择款式字样 -->
+  <view style="width: 96vw;height: 8vw;display: flex;align-items: center;justify-content: center;font-size: 5vw;color: rgb(90, 90, 90);border-bottom: 1rpx solid rgb(163, 163, 163);">请自由定制</view>
+
+  <view style="height: 40px;width: 80vw;margin-top: 20px;margin-left: 10px;display: flex;align-items: center;">
+    <text style="font-size: 4.6vw;opacity: 0;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">方案名：</text>
+    <input style="width: 40vw;height: 80%;border-bottom: 1rpx solid rgb(201, 201, 201);padding-left: 4px;text-align: center;" maxlength="11" placeholder="{{placeHoldeName}}" />
+  </view>
+  <!-- 主体花色 -->
+  <view style="height: 40px;width: 100vw;margin-top: 20px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">主体花色：</text>
+    <!-- <input style="width: 40vw;height: 80%;border-bottom: 1rpx solid rgb(201, 201, 201);padding-left: 4px;text-align: center;" maxlength="11" placeholder="{{placeHoldeName}}" /> -->
+    <picker style="font-size: 14px;color: rgb(146, 146, 146);margin-left: 3vw;width: 40vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{rangeList[0]}}" value="{{indexList[0]}}" bindchange="pickChange" data-id="2">{{indexList[0]==-1?'-——-暂未选择-——- ':rangeList[0][indexList[0]]}}</picker>
+    <image src="{{imageUrlList[1]}}" style="width: 40px;height: 40px; position: absolute;right: 40px;" bind:tap="previewImage" data-url="{{imageUrlList[1]}}"></image>
+
+  </view>
+  <!-- 领口 -->
+  <view style="height: 40px;width: 100vw;margin-top: 10px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">领口花色：</text>
+    <!-- <input style="width: 40vw;height: 80%;border-bottom: 1rpx solid rgb(201, 201, 201);padding-left: 4px;text-align: center;" maxlength="11" placeholder="{{placeHoldeName}}" /> -->
+    <picker style="font-size: 14px;color: rgb(146, 146, 146);margin-left: 3vw;width: 40vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{rangeList[1]}}" value="{{indexList[1]}}" bindchange="pickChange" data-id="2">{{indexList[1]==-1?'-——-暂未选择-——- ':rangeList[1][indexList[1]]}}</picker>
+    <image src="{{imageUrlList[2]}}" style="width: 40px;height: 40px; position: absolute;right: 40px;"></image>
+
+  </view>
+  <!-- 衣襟 -->
+  <view style="height: 40px;width: 100vw;margin-top: 10px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">衣襟花色：</text>
+    <!-- <input style="width: 40vw;height: 80%;border-bottom: 1rpx solid rgb(201, 201, 201);padding-left: 4px;text-align: center;" maxlength="11" placeholder="{{placeHoldeName}}" /> -->
+    <picker style="font-size: 14px;color: rgb(146, 146, 146);margin-left: 3vw;width: 40vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{rangeList[2]}}" value="{{indexList[2]}}" bindchange="pickChange" data-id="2">{{indexList[2]==-1?'-——-暂未选择-——- ':rangeList[2][indexList[2]]}}</picker>
+    <image src="{{imageUrlList[2]}}" style="width: 40px;height: 40px; position: absolute;right: 40px;"></image>
+
+  </view>
+  
+  <!-- 袖口 -->
+  <view style="height: 40px;width: 100vw;margin-top: 10px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">袖口花色：</text>
+    <!-- <input style="width: 40vw;height: 80%;border-bottom: 1rpx solid rgb(201, 201, 201);padding-left: 4px;text-align: center;" maxlength="11" placeholder="{{placeHoldeName}}" /> -->
+    <picker style="font-size: 14px;color: rgb(146, 146, 146);margin-left: 3vw;width: 40vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{rangeList[3]}}" value="{{indexList[3]}}" bindchange="pickChange" data-id="2">{{indexList[3]==-1?'-——-暂未选择-——- ':rangeList[3][indexList[3]]}}</picker>
+    <image src="{{imageUrlList[3]}}" style="width: 40px;height: 40px; position: absolute;right: 40px;"></image>
+  </view>
+  <!-- 扣子 -->
+  <view style="height: 40px;width: 100vw;margin-top: 10px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">扣子：</text>
+    <!-- <input style="width: 40vw;height: 80%;border-bottom: 1rpx solid rgb(201, 201, 201);padding-left: 4px;text-align: center;" maxlength="11" placeholder="{{placeHoldeName}}" /> -->
+    <picker style="font-size: 14px;color: rgb(146, 146, 146);margin-left: 3vw;width: 40vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{rangeList[4]}}" value="{{indexList[4]}}" bindchange="pickChange" data-id="2">{{indexList[4]==-1?'-——-暂未选择-——- ':rangeList[4][indexList[4]]}}</picker>
+    <image src="{{imageUrlList[4]}}" style="width: 40px;height: 40px; position: absolute;right: 40px;"></image>
+
+  </view>
+  <!-- 主体材质 -->
+  <view style="height: 40px;width: 100vw;margin-top: 10px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="color: red;font-size: 4.6vw;">*</text>
+    <text style="color: black;font-size: 17px;font-weight: 700;width: 90px;">主体材质：</text>
+    <picker style="font-size: 14px;color: rgb(146, 146, 146);margin-left: 3vw;width: 40vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;justify-content: center;" range="{{rangeList[5]}}" value="{{indexList[5]}}" bindchange="pickChange" data-id="2">{{indexList[5]==-1?'-——-暂未选择-——- ':rangeList[5][indexList[5]]}}</picker>
+  </view>
+  <!-- 身高 -->
+  <!-- 体重 -->
+  <view style="margin-top: 1vw;width: 90vw;display: flex;align-items: center;margin-left: 10px;">
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="color: black;font-size: 17px;font-weight: 700;">身高：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{height}}" placeholder="30-230(cm)" bindinput="getInputContent" data-id="1" />
+    </view>
+    <view style="margin-top: 4vw;width: 45vw;display: flex;align-items: center;margin-left: 3vw;">
+      <text style="color: red;font-size: 4.6vw;">*</text>
+      <text style="color: black;font-size: 17px;font-weight: 700;">体重：</text>
+      <input style="font-size: 4.4vw;color: rgb(146, 146, 146);margin-left: 1vw;width: 23vw;height: 9vw;background-color: rgb(240, 240, 240);display: flex;align-items: center;padding-left: 2vw;padding-right: 1vw;" value="{{weight}}" placeholder="20-110(kg)" bindinput="getInputContent" data-id="2" />
+    </view>
+  </view>
+
+  <!-- 预估价格 -->
+  <view style="height: 40px;width: 100vw;margin-top: 10px;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <text style="font-size: 4.6vw;opacity: 0;">*</text>
+    <text style="color: rgb(114, 114, 114);font-size: 17px;font-weight: 700;width: 90px;">预估：</text>
+    <view style="position: absolute;right: 30px;color: orange;">
+      <text style="font-size: 18px;margin-right: 2px;">￥</text>
+      <text>220.00</text></view>
+    </view>
+  <view style="height: 10px;width: 100vw;margin-left: 10px;display: flex;align-items: center;position: relative;">
+    <view style="position: absolute;right: 30px;font-size: 10px;color: orangered;">
+      <text style="margin-right: 2px;">+0.00</text>
+      <text>(首次免费)</text></view>
+  </view>
+
+  <!-- 确认添加 -->
+  <view style="height: 12vw;width: 60vw;margin-left: 20vw;margin-top: 25px; background: linear-gradient(to right, rgb(252, 197, 134),rgb(253, 179, 93),rgb(253, 179, 93),rgb(253, 188, 113),rgb(247, 200, 147));color: white;display: flex;justify-content: center;align-items: center;border-radius: 4vw;letter-spacing: 2rpx;font-size: 4.2vw;transition-property: background;transition-duration: 0.5s;" bind:tap="confirmAddCart">确定添加</view>
+  
+</view>
+
+
+
+<!-- 底部显示栏 -->
+<view class="bottomView">
+
+<view class="toPayLeft" style="width: 18vw;height: 100%;">
+  <view class="checkbox" style="width: 18vw;display: flex;align-items: center;">
+    <checkbox style="width:18px;height:18px;border-radius: 10px;display: flex;align-items: center;" checked="{{item.checked}}" bindchange="checkboxChange"></checkbox>
+    <view style="margin-left: 10px;height: 100%;display: flex;width: 35px;align-items: center;">全选</view>
+  </view>
+</view>
+
+<view class="toPayInfo" style="width: 46vw;margin-left: 4vw;">
+  共
+  <text style="color: orangered;">{{total}}</text>
+  件,总价:<text class="totalPrice">￥{{totalPrice}}</text>
+</view>
+
+<view class="toPay" bindtap="toCheckout" style="width: 27vw;height: 6vh; background: linear-gradient(to right, #FFA500, #FF8C00);display: flex;align-items: center;margin-left: 1vw;">
+  结算
+</view>
+  
+</view>
